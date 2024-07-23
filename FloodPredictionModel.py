@@ -4,8 +4,7 @@ from datetime import datetime
 import os
 
 # Import rain data into pandas dataframe
-rain_data  = pd.read_csv('raindata/raindata2023-2024.csv')
-print(rain_data)
+rain_data = pd.read_csv('raindata/raindata2023-2024.csv')
 
 # Extract dates from rain data
 rain_dates = list(rain_data['datetime'])
@@ -18,31 +17,30 @@ flooddata_dict = {}
 for filename in os.listdir(directory):
     file_path = os.path.join(directory, filename)
     if os.path.isfile(file_path):
-        # Open excel file
-        file = pd.read_excel(file_path)
-        print(file.shape)
+        # Open the Excel file to check the number of sheets
+        excel_file = pd.ExcelFile(file_path)
         
-        # Get the date of the data
-        filename_without_extension = filename.split('.')[0]
-        
-        # Format date
-        date_obj = datetime.strptime(filename_without_extension, "%Y%m%d")
-        formatted_date = date_obj.strftime("%d/%m/%Y")
-        
-        # Append to date list
-        flooddata_dict[formatted_date] = file
+        # Check if the file has at least two sheets
+        if len(excel_file.sheet_names) > 1:
+            # Read the second sheet
+            file = pd.read_excel(file_path, sheet_name=1)
+            
+            # Get the date of the data
+            filename_without_extension = filename.split('.')[0]
+            
+            # Format date
+            date_obj = datetime.strptime(filename_without_extension, "%Y%m%d")
+            formatted_date = date_obj.strftime("%Y-%m-%d")
+            
+            # Append to date list
+            flooddata_dict[formatted_date] = file
 
 flood_dates = list(flooddata_dict.keys())
 
 # Merge rain data with flood data based on dates
 for n in range(len(rain_dates)):
     rain_date = rain_dates[n]
-    for i in range(len(flood_dates)):
-        flood_date = flood_dates[i]
-        if flood_date == rain_date:
-            flood_data = flooddata_dict[flood_date]
-            rain_data.loc[n, flood_data.columns] = flood_data.values[0]
-
-
-
-
+    if rain_date in flood_dates:
+        for category in rain_data.columns:
+            if category != 'datetime':
+                flooddata_dict[rain_date][category] = rain_data[category].iloc[n]
