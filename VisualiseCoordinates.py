@@ -147,3 +147,4 @@ def visualise(coordinates, cluster_type):
 
     m.save('./index.html')
 
+
