@@ -3,36 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Web Page with Map</title>
-    <!-- Include any necessary CSS files here -->
+    <title>Thailand Flood Safety Map</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        iframe {
+            border: none;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Web Page</h1>
-        <nav>
-            <ul>
-                <li><a href="#section1">Section 1</a></li>
-                <li><a href="#section2">Section 2</a></li>
-            </ul>
-        </nav>
+    <!-- Header -->
+    <header class="bg-primary text-white py-3">
+        <div class="container">
+            <h1 class="text-center">Thailand Flood Safety Map</h1>
+        </div>
     </header>
 
-    <main>
-        <section id="section1">
-            <h2>About This Page</h2>
-            <p>This page contains a map and some additional information.</p>
-        </section>
-
-        <section id="section2">
-            <h2>Interactive Map</h2>
-            <iframe src="map.html" width="75%" height="50%"></iframe>
+    <!-- Main Content -->
+    <main class="container mt-4">
+        <section id="section2" class="mt-4">
+            <h2>Flood Prediction Map</h2>
+            <h5>Short-term 7-Day Forecast Prediction</h5>
+            <iframe src="map.html" class="w-100" style="height: 75vh;"></iframe>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2024 My Web Page</p>
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-3 mt-4">
+        <div class="container text-center">
+            <p>&copy; 2024 SPAB</p>
+        </div>
     </footer>
 
-    <!-- Include any necessary JavaScript files here -->
+    <!-- Include Bootstrap JavaScript and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
