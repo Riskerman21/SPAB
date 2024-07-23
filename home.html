@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thailand Flood Safety Map</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
     <style>
         iframe {
             border: none;
@@ -13,19 +14,23 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="bg-primary text-white py-3">
+    <header class="bg-white text-dark pt-3">
         <div class="container">
             <h1 class="text-center">Thailand Flood Safety Map</h1>
+            <hr class="custom-hr">
         </div>
     </header>
-
+    
     <!-- Main Content -->
     <main class="container mt-4">
-        <section id="section2" class="mt-4">
-            <h2>Flood Prediction Map</h2>
-            <h5>Short-term 7-Day Forecast Prediction</h5>
-            <iframe src="map.html" class="w-100" style="height: 75vh;"></iframe>
-        </section>
+        <div class="row">
+            <div class="col-md-10">
+                <div id="maps-container"></div>
+            </div>
+            <div class="col-md-2 text-right">
+                <button id="pause-button" class="btn btn-primary">Pause</button>
+            </div>
+        </div>
     </main>
 
     <!-- Footer -->
@@ -38,6 +43,7 @@
     <!-- Include Bootstrap JavaScript and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="javascript.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
