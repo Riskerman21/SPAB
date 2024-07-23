@@ -131,7 +131,7 @@ def visualise(coordinates, cluster_type):
     midpoint = (lat_avg, long_avg)
 
     #smaller zoom start is more zoomed out
-    m = folium.Map(location=midpoint, zoom_start=10)
+    m = folium.Map(location=midpoint, zoom_start=7)
 
     for cluster in clusters:
         cluster = sort_coordinates(cluster)
