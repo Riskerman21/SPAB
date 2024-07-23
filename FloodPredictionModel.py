@@ -12,7 +12,6 @@ import os
 
 directory = 'flooddata/date/'
 flooddata_dict = {}
-
 # Loop through all files in the directory
 for filename in os.listdir(directory):
     file_path = os.path.join(directory, filename)
@@ -29,12 +28,4 @@ for filename in os.listdir(directory):
         flooddata_dict.update({formatted_date: file})
 
 print(flooddata_dict)
-
-#get dates where it rained
-#for i in range(len(rain_data)):
-    #check whether it rained if so add to dates rained
-    #if rain_dates['precip'].iloc[i] > 0:   
-
-
-
 
