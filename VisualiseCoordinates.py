@@ -2,6 +2,7 @@ import numpy as np
 from sklearn.cluster import DBSCAN, MeanShift, OPTICS
 import folium
 from math import atan2
+import reverse_geocode
 
 coordinates = [
     (16.2835000740, 101.8698031800), (16.3057595130, 102.0267518000),
@@ -136,7 +137,9 @@ def visualise(coordinates, cluster_type):
     for cluster in clusters:
         cluster = sort_coordinates(cluster)
         cluster = chaikin(cluster)
-        folium.Polygon(cluster, color='blue', fill=True, fill_opacity=0.2).add_to(m)
+        # Get city and country name from coordinates of the cluster
+        loc = reverse_geocode.search(cluster)[0]['city']+','+reverse_geocode.search(cluster)[0]['country']
+        folium.Polygon(cluster, loc, color='red', fill=True, fill_opacity=0.1).add_to(m)
 
     m.save('map.html')
 

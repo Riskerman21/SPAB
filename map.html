@@ -25,7 +25,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_f377299e26e18df60772dc2438ec2789 {
+                #map_13903138605a7519f8cefec5f89dd2fb {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -39,14 +39,14 @@
 <body>
     
     
-            <div class="folium-map" id="map_f377299e26e18df60772dc2438ec2789" ></div>
+            <div class="folium-map" id="map_13903138605a7519f8cefec5f89dd2fb" ></div>
         
 </body>
 <script>
     
     
-            var map_f377299e26e18df60772dc2438ec2789 = L.map(
-                "map_f377299e26e18df60772dc2438ec2789",
+            var map_13903138605a7519f8cefec5f89dd2fb = L.map(
+                "map_13903138605a7519f8cefec5f89dd2fb",
                 {
                     center: [16.261583531720003, 102.61499382053333],
                     crs: L.CRS.EPSG3857,
@@ -60,61 +60,181 @@
 
         
     
-            var tile_layer_66ea9c8e4cd03bea6220883f80ead52b = L.tileLayer(
+            var tile_layer_2620341d458defaac667562297e914da = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
             );
         
     
-            tile_layer_66ea9c8e4cd03bea6220883f80ead52b.addTo(map_f377299e26e18df60772dc2438ec2789);
+            tile_layer_2620341d458defaac667562297e914da.addTo(map_13903138605a7519f8cefec5f89dd2fb);
         
     
-            var polygon_88c4260a7a34535d397d86507a7baaaf = L.polygon(
+            var polygon_81ce4f15eb41cd642458c1f4bf569456 = L.polygon(
                 [[16.335390292375, 102.10616063625], [16.340560618625, 102.11782957375], [16.342318335875, 102.12978888125001], [16.340663444125, 102.14203855874999], [16.335595943375, 102.15457860625], [16.327115833624998, 102.16740902375], [16.3215831971875, 102.17090699812499], [16.3189980340625, 102.165072529375], [16.31936034425, 102.1499056175], [16.32267012775, 102.1254062625], [16.3264450469375, 102.10994898062499], [16.3306851018125, 102.10353377187501]],
-                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
-            ).addTo(map_f377299e26e18df60772dc2438ec2789);
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_13903138605a7519f8cefec5f89dd2fb);
         
     
-            var polygon_fb83c9525ce903e901a28f1f72def665 = L.polygon(
+        var popup_0310bd8c8fe5dfc6651acc9092c158d2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fe05e47ac6d39be16a5117cb3350c5dd = $(`<div id="html_fe05e47ac6d39be16a5117cb3350c5dd" style="width: 100.0%; height: 100.0%;">Phu Khiao,Thailand</div>`)[0];
+                popup_0310bd8c8fe5dfc6651acc9092c158d2.setContent(html_fe05e47ac6d39be16a5117cb3350c5dd);
+            
+        
+
+        polygon_81ce4f15eb41cd642458c1f4bf569456.bindPopup(popup_0310bd8c8fe5dfc6651acc9092c158d2)
+        ;
+
+        
+    
+    
+            var polygon_970f1fa39263da53ebcf4e36832cc1b8 = L.polygon(
                 [[16.494616705125, 102.10705550499999], [16.506046137875, 102.09512435500001], [16.514070077, 102.090066446875], [16.5186885225, 102.091881780625], [16.519901474375, 102.10057035625], [16.517708932625002, 102.11613217375], [16.509650248625, 102.13169239375], [16.495725422375003, 102.14725101625], [16.475934453875, 102.16280804125], [16.450277343125002, 102.17836346874999], [16.4326514895, 102.187157848125], [16.423056893000002, 102.189191179375], [16.421493553625, 102.18446346249999], [16.427961471375, 102.1729746975], [16.4353004851875, 102.16243379125001], [16.4435105950625, 102.15284074375], [16.452591800999997, 102.14419555500001], [16.462544103, 102.136498225], [16.472865687687502, 102.12774244], [16.4835565550625, 102.1179282]],
-                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
-            ).addTo(map_f377299e26e18df60772dc2438ec2789);
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_13903138605a7519f8cefec5f89dd2fb);
         
     
-            var polygon_ca0a9d0e0887483e68700483c291fb47 = L.polygon(
+        var popup_66def2e3865f0f0296fd855afee1576f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_cc2a3869ca220e2aec085dbcd257d37b = $(`<div id="html_cc2a3869ca220e2aec085dbcd257d37b" style="width: 100.0%; height: 100.0%;">Chum Phae,Thailand</div>`)[0];
+                popup_66def2e3865f0f0296fd855afee1576f.setContent(html_cc2a3869ca220e2aec085dbcd257d37b);
+            
+        
+
+        polygon_970f1fa39263da53ebcf4e36832cc1b8.bindPopup(popup_66def2e3865f0f0296fd855afee1576f)
+        ;
+
+        
+    
+    
+            var polygon_fa5760ad1071493238f598ff2b83cd71 = L.polygon(
                 [[16.466919598375, 101.89548811124999], [16.454174532625, 101.88446365875001], [16.441146468812498, 101.87185918187501], [16.427835406937497, 101.857674680625], [16.414241346999997, 101.841910155], [16.400364289, 101.824565605], [16.402048532125, 101.820150420625], [16.419294076375, 101.82866460187499], [16.45210092175, 101.85010814875], [16.500469068250002, 101.88448106125001], [16.541487888125, 101.91024033500001], [16.575157381375, 101.92738597000002], [16.601477548, 101.93591796625002], [16.620448388, 101.93583632375], [16.635204252312498, 101.94228161187499], [16.6457451409375, 101.955253830625], [16.652071053874998, 101.97475297999999], [16.654181991125, 102.00077906000001], [16.652252470125, 102.01933558500001], [16.646282490875, 102.030422555], [16.636272053375, 102.03403997000001], [16.622221157625003, 102.03018783], [16.610122349562502, 102.025756416875], [16.5999756291875, 102.02074573062498], [16.591780996500002, 102.01515577125], [16.585538451500003, 102.00898653875001], [16.578178065125, 102.00336123312502], [16.569699837375005, 101.998279854375], [16.560103768250002, 101.9937424025], [16.54938985775, 101.9897488775], [16.5383993126875, 101.98227037125], [16.5271321330625, 101.97130688375], [16.515588318875, 101.956858415], [16.503767870125003, 101.93892496499998], [16.491716267125003, 101.92271876437499], [16.479433509875, 101.908239813125]],
-                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
-            ).addTo(map_f377299e26e18df60772dc2438ec2789);
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_13903138605a7519f8cefec5f89dd2fb);
         
     
-            var polygon_d6df09a7611a33e0c0ead9317327283f = L.polygon(
+        var popup_2dd1d28df8f907d8948162bd851385af = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_545d9e25b7ec5c19ff2e27d93053e2da = $(`<div id="html_545d9e25b7ec5c19ff2e27d93053e2da" style="width: 100.0%; height: 100.0%;">Khon San,Thailand</div>`)[0];
+                popup_2dd1d28df8f907d8948162bd851385af.setContent(html_545d9e25b7ec5c19ff2e27d93053e2da);
+            
+        
+
+        polygon_fa5760ad1071493238f598ff2b83cd71.bindPopup(popup_2dd1d28df8f907d8948162bd851385af)
+        ;
+
+        
+    
+    
+            var polygon_5e2468492fc82405dbcbd97cdd32f7c6 = L.polygon(
                 [[16.507574565625, 102.9032198775], [16.501781365375003, 102.88501504250002], [16.5007491390625, 102.87739977875], [16.5044778866875, 102.88037408625], [16.51296760825, 102.89393796499999], [16.52621830375, 102.91809141500002], [16.545866972250003, 102.93104737000002], [16.57191361375, 102.93280583], [16.60435822825, 102.92336679499999], [16.64320081575, 102.902730265], [16.6696133773125, 102.88966800125], [16.6835959129375, 102.88418000375], [16.685148422624998, 102.88626627250001], [16.674270906375, 102.8959268075], [16.659159895437497, 102.914496034375], [16.639815389812497, 102.941973953125], [16.6162373895, 102.97836056375], [16.5884258945, 103.02365586625001], [16.5670332508125, 103.05614360375], [16.5520594584375, 103.07582377625], [16.543504517375002, 103.08269638375], [16.541368427625, 103.07676142625], [16.53787882675, 103.069157119375], [16.533035714750003, 103.059883463125], [16.526839091625, 103.04894045750001], [16.519288957375, 103.0363281025], [16.5111403833125, 103.02912994812499], [16.5023933694375, 103.027345994375], [16.49304791575, 103.03097624125], [16.48310402225, 103.04002068874999], [16.4733276666875, 103.04366785062498], [16.4637188490625, 103.041917726875], [16.454277569374998, 103.0347703175], [16.445003827624998, 103.0222256225], [16.441172412125, 103.011834403125], [16.442783322874998, 103.003596659375], [16.449836559875, 102.99751239125], [16.462332123125, 102.99358159875], [16.4739031016875, 102.987061111875], [16.4845494955625, 102.977950930625], [16.49427130475, 102.966251055], [16.50306852925, 102.951961485], [16.508218147562502, 102.93669309875001], [16.5097201596875, 102.92044589625]],
-                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
-            ).addTo(map_f377299e26e18df60772dc2438ec2789);
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_13903138605a7519f8cefec5f89dd2fb);
         
     
-            var polygon_7275d27fc302a0705641f89898d31362 = L.polygon(
+        var popup_a3cda7fdb7a721b36f7b9206fbb8effd = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_624b48306f67ac3eb2ccdca2be329390 = $(`<div id="html_624b48306f67ac3eb2ccdca2be329390" style="width: 100.0%; height: 100.0%;">Khon Kaen,Thailand</div>`)[0];
+                popup_a3cda7fdb7a721b36f7b9206fbb8effd.setContent(html_624b48306f67ac3eb2ccdca2be329390);
+            
+        
+
+        polygon_5e2468492fc82405dbcbd97cdd32f7c6.bindPopup(popup_a3cda7fdb7a721b36f7b9206fbb8effd)
+        ;
+
+        
+    
+    
+            var polygon_c5b07c10b14383b458c09f1288c6522e = L.polygon(
                 [[16.20092164, 102.93838446500001], [16.241262298, 102.91505011499999], [16.2723012819375, 102.902135385625], [16.2940385918125, 102.899640276875], [16.306474227625, 102.90756478875], [16.309608189375002, 102.92590892125], [16.308835554625, 102.946118568125], [16.304156323375, 102.968193729375], [16.295570495625, 102.992134405], [16.283078071375, 103.017940595], [16.272522621625, 103.03821645], [16.263904146375005, 103.05296196999998], [16.257222645625003, 103.06217715499999], [16.252478119375002, 103.06586200500001], [16.245750296125003, 103.07637284125], [16.237039175875, 103.09370966375], [16.226344758625, 103.11787247250001], [16.213667044375, 103.1488612675], [16.203183502625, 103.1640913925], [16.194894133375, 103.1635628475], [16.188798936625002, 103.1472756325], [16.184897912374996, 103.11522974750001], [16.178745856874997, 103.08992801875002], [16.170342770125, 103.07137044625], [16.159688652125, 103.05955703000001], [16.146783502875, 103.05448777], [16.1379161955625, 103.04609220687499], [16.133086730187497, 103.034370340625], [16.13229510675, 103.01932217125], [16.13554132525, 103.00094769875], [16.148061153625, 102.98133325687499], [16.169854591875, 102.960478845625]],
-                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
-            ).addTo(map_f377299e26e18df60772dc2438ec2789);
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_13903138605a7519f8cefec5f89dd2fb);
         
     
-            var polygon_2fc88fc7be60d19a27127a5eb99373fb = L.polygon(
+        var popup_95fea780054d3c60cc96696e5164f059 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_97c7ea9d40cf4a99102122d4cddf60a3 = $(`<div id="html_97c7ea9d40cf4a99102122d4cddf60a3" style="width: 100.0%; height: 100.0%;">Kut Rang,Thailand</div>`)[0];
+                popup_95fea780054d3c60cc96696e5164f059.setContent(html_97c7ea9d40cf4a99102122d4cddf60a3);
+            
+        
+
+        polygon_c5b07c10b14383b458c09f1288c6522e.bindPopup(popup_95fea780054d3c60cc96696e5164f059)
+        ;
+
+        
+    
+    
+            var polygon_0f6f514c1e778ad5e6b85ce742372a46 = L.polygon(
                 [[15.890727475375, 103.1761814475], [15.898061965624999, 103.1817602725], [15.906761634625, 103.1875357225], [15.916826482374999, 103.19350779749999], [15.928256508875, 103.1996764975], [15.941051714124999, 103.2060418225], [15.950702204125001, 103.210824463125], [15.957207978875001, 103.214024419375], [15.960569038375, 103.21564169125], [15.960785382625001, 103.21567627875], [15.958319670875001, 103.21785922187499], [15.953171903125, 103.22219052062499], [15.945342079375, 103.22867017499999], [15.934830199625, 103.23729818499999], [15.924308858562501, 103.24317172312499], [15.9137780561875, 103.246290789375], [15.9032377925, 103.24665538375001], [15.8926880675, 103.24426550625], [15.881224545312502, 103.24377248812502], [15.8688472259375, 103.245176329375], [15.855556109375001, 103.24847703], [15.841351195625002, 103.25367459], [15.8319114826875, 103.256762495], [15.827236970562502, 103.257740745], [15.82732765925, 103.25660934], [15.83218354875, 103.25336827999999], [15.8383416131875, 103.24589414249999], [15.8458018525625, 103.2341869275], [15.854564266875, 103.21824663500001], [15.864628856125, 103.19807326499999], [15.874010920625, 103.18433794375], [15.882710460375, 103.17704067125001]],
-                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
-            ).addTo(map_f377299e26e18df60772dc2438ec2789);
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_13903138605a7519f8cefec5f89dd2fb);
         
     
-            var polygon_821edd950ef7cc9528fed48f90fb9c84 = L.polygon(
+        var popup_e3cded5c00c832ddd3eac3e43bc0b40f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8a2cc6ffacd3c350d2321f4a13883b56 = $(`<div id="html_8a2cc6ffacd3c350d2321f4a13883b56" style="width: 100.0%; height: 100.0%;">Borabue,Thailand</div>`)[0];
+                popup_e3cded5c00c832ddd3eac3e43bc0b40f.setContent(html_8a2cc6ffacd3c350d2321f4a13883b56);
+            
+        
+
+        polygon_0f6f514c1e778ad5e6b85ce742372a46.bindPopup(popup_e3cded5c00c832ddd3eac3e43bc0b40f)
+        ;
+
+        
+    
+    
+            var polygon_e337d891d365b445f0d0ac2257224dad = L.polygon(
                 [[16.01424041275, 103.27331705750001], [16.02557188925, 103.27295484250001], [16.031750802374997, 103.27553049000002], [16.032777152125, 103.28104400000001], [16.0286509385, 103.28949537250001], [16.019372161499998, 103.30088460750001], [16.011899903874998, 103.30666977875], [16.006234165625003, 103.30685088625], [16.002374946750002, 103.30142793], [16.00032224725, 103.29040091], [16.00161559175, 103.28204009125], [16.006254980250002, 103.27634547375001]],
-                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
-            ).addTo(map_f377299e26e18df60772dc2438ec2789);
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_13903138605a7519f8cefec5f89dd2fb);
         
     
-            var polygon_a642b7f6eea64cc1bcc7f00534dcd682 = L.polygon(
-                [[15.728355605625, 103.3617823925], [15.742696757375, 103.36971838749999], [15.7491640571875, 103.378845085], [15.7477575050625, 103.389162485], [15.738477100999999, 103.4006705875], [15.721322845, 103.41336939249999], [15.7091604290625, 103.41773479624999], [15.701989853187499, 103.41376679875], [15.699811117374999, 103.4014654], [15.702624221625001, 103.3808306], [15.708319337750002, 103.36733849875], [15.716896465749999, 103.36098909625001]],
-                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
-            ).addTo(map_f377299e26e18df60772dc2438ec2789);
+        var popup_07731e73b3c4b121991696f6a1f0577c = L.popup({"maxWidth": "100%"});
+
         
+            
+                var html_1aedf0dc55317c16542854fa95954279 = $(`<div id="html_1aedf0dc55317c16542854fa95954279" style="width: 100.0%; height: 100.0%;">Kae Dam,Thailand</div>`)[0];
+                popup_07731e73b3c4b121991696f6a1f0577c.setContent(html_1aedf0dc55317c16542854fa95954279);
+            
+        
+
+        polygon_e337d891d365b445f0d0ac2257224dad.bindPopup(popup_07731e73b3c4b121991696f6a1f0577c)
+        ;
+
+        
+    
+    
+            var polygon_1bbff6f5114021201e0be71276bb0d9a = L.polygon(
+                [[15.728355605625, 103.3617823925], [15.742696757375, 103.36971838749999], [15.7491640571875, 103.378845085], [15.7477575050625, 103.389162485], [15.738477100999999, 103.4006705875], [15.721322845, 103.41336939249999], [15.7091604290625, 103.41773479624999], [15.701989853187499, 103.41376679875], [15.699811117374999, 103.4014654], [15.702624221625001, 103.3808306], [15.708319337750002, 103.36733849875], [15.716896465749999, 103.36098909625001]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_13903138605a7519f8cefec5f89dd2fb);
+        
+    
+        var popup_e6104b81710fd580c65a322690450b35 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_59f1515daae69fc39e30e179e050bbb4 = $(`<div id="html_59f1515daae69fc39e30e179e050bbb4" style="width: 100.0%; height: 100.0%;">Pathum Rat,Thailand</div>`)[0];
+                popup_e6104b81710fd580c65a322690450b35.setContent(html_59f1515daae69fc39e30e179e050bbb4);
+            
+        
+
+        polygon_1bbff6f5114021201e0be71276bb0d9a.bindPopup(popup_e6104b81710fd580c65a322690450b35)
+        ;
+
+        
+    
 </script>
 </html>
