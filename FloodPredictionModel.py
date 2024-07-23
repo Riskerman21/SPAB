@@ -4,7 +4,7 @@ from datetime import datetime
 import os
 
 # Import rain data into pandas dataframe
-rain_data = pd.read_csv('raindata/raindata2023-2024.csv')
+rain_data  = pd.read_csv('raindata/raindata2023-2024.csv')
 print(rain_data)
 
 # Extract dates from rain data
@@ -40,7 +40,7 @@ for i in range(rain_data.shape[0]):
                 flood_data = flooddata_dict[flood_date]
                 rain_data.loc[n, flood_data.columns] = flood_data.values[0]
 
-print(rain_data)
+print(rain_data.keys)
 
 
 
