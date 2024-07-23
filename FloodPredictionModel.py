@@ -20,6 +20,7 @@ for filename in os.listdir(directory):
     if os.path.isfile(file_path):
         # Open excel file
         file = pd.read_excel(file_path)
+        print(file.shape)
         
         # Get the date of the data
         filename_without_extension = filename.split('.')[0]
@@ -31,16 +32,16 @@ for filename in os.listdir(directory):
         # Append to date list
         flooddata_dict[formatted_date] = file
 
-# Merge rain data with flood data based on dates
-for i in range(rain_data.shape[0]):
-    for n in range(len(rain_dates)):
-        rain_date = rain_dates[n]
-        for flood_date in flooddata_dict.keys():
-            if flood_date == rain_date:
-                flood_data = flooddata_dict[flood_date]
-                rain_data.loc[n, flood_data.columns] = flood_data.values[0]
+flood_dates = list(flooddata_dict.keys())
 
-print(rain_data.keys)
+# Merge rain data with flood data based on dates
+for n in range(len(rain_dates)):
+    rain_date = rain_dates[n]
+    for i in range(len(flood_dates)):
+        flood_date = flood_dates[i]
+        if flood_date == rain_date:
+            flood_data = flooddata_dict[flood_date]
+            rain_data.loc[n, flood_data.columns] = flood_data.values[0]
 
 
 
