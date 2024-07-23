@@ -145,5 +145,5 @@ def visualise(coordinates, cluster_type):
         cluster = chaikin(cluster)
         folium.Polygon(cluster, color='blue', fill=True, fill_opacity=0.2).add_to(m)
 
-    m.save('/Users/baileystoodley/Desktop/index.html')
+    m.save('index.html')
 
