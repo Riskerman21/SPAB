@@ -115,23 +115,16 @@ def visualise(coordinates, cluster_type):
         dbscan = DBSCAN(eps=0.1, min_samples=3).fit(coordinates)
         dbscan_labels = dbscan.labels_
         clusters = get_clusters(coordinates, dbscan_labels)
-        print("DBSCAN Clusters:")
-        for i, cluster in enumerate(clusters):
-            print(f"Cluster {i + 1}: {cluster}")
+
     elif cluster_type == 2:
         mean_shift = MeanShift().fit(coordinates)
         mean_shift_labels = mean_shift.labels_
         clusters = get_clusters(coordinates, mean_shift_labels)
-        print("\nMean Shift Clusters:")
-        for i, cluster in enumerate(clusters):
-            print(f"Cluster {i + 1}: {cluster}")
+
     else:
         optics = OPTICS(min_samples=3).fit(coordinates)
         optics_labels = optics.labels_
         clusters = get_clusters(coordinates, optics_labels)
-        print("\nOPTICS Clusters:")
-        for i, cluster in enumerate(clusters):
-            print(f"Cluster {i + 1}: {cluster}")
 
     lat_avg = sum([coord[0] for coord in coordinates])/len(coordinates)
     long_avg = sum([coord[1] for coord in coordinates])/len(coordinates)
@@ -145,5 +138,6 @@ def visualise(coordinates, cluster_type):
         cluster = chaikin(cluster)
         folium.Polygon(cluster, color='blue', fill=True, fill_opacity=0.2).add_to(m)
 
-    m.save('index.html')
+    m.save('map.html')
 
+visualise(coordinates, 3)
