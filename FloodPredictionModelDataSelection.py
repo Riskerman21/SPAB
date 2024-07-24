@@ -31,5 +31,5 @@ rain_data['datetime'] = pd.to_datetime(rain_data['datetime'])
 
 merged_df = flooddata_df.merge(rain_data, left_on='Date', right_on='datetime', how='left')
 
-print(merged_df)
-merged_df.to_excel('merged_data.xlsx', index=False)
+
+
