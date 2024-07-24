@@ -1,13 +1,13 @@
 // maps.js
 document.addEventListener('DOMContentLoaded', function() {
     const mapsData = [
-        { src: 'map.html', title: 'Day 1' },
-        { src: 'map.html', title: 'Day 2' },
-        { src: 'map.html', title: 'Day 3' },
-        { src: 'map.html', title: 'Day 4' },
-        { src: 'map.html', title: 'Day 5' },
-        { src: 'map.html', title: 'Day 6' },
-        { src: 'map.html', title: 'Day 7' }
+        { src: 'maps/map0.html', title: 'Day 1' },
+        { src: 'maps/map1.html', title: 'Day 2' },
+        { src: 'maps/map2.html', title: 'Day 3' },
+        { src: 'maps/map3.html', title: 'Day 4' },
+        { src: 'maps/map4.html', title: 'Day 5' },
+        { src: 'maps/map5.html', title: 'Day 6' },
+        { src: 'maps/map6.html', title: 'Day 7' }
     ];
 
     let currentIndex = 0;

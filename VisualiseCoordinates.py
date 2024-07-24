@@ -110,7 +110,7 @@ def get_buffered_coordinates(cluster, buffer_ratio=0.1):
 
     Args:
         cluster (list): A list of tuples representing the coordinates of the polygon vertices.
-        buffer_ratio (float, optional): The ratio of the polygon's perimeter by which to buffer it. 
+        buffer_ratio (float, optional): The ratio of the polygon's perimeter by which to buffer it.
                                         Defaults to 0.1.
 
     Returns:
@@ -126,7 +126,7 @@ def get_ring_coordinates(cluster, buffer_ratio=0.05):
 
     Args:
         cluster (list): A list of tuples representing the coordinates of the polygon vertices.
-        buffer_ratio (float, optional): The ratio of the polygon's perimeter by which to buffer it. 
+        buffer_ratio (float, optional): The ratio of the polygon's perimeter by which to buffer it.
                                         Defaults to 0.05.
 
     Returns:
@@ -137,7 +137,7 @@ def get_ring_coordinates(cluster, buffer_ratio=0.05):
     ring_polygon = buffered_polygon.difference(polygon)
     return list(ring_polygon.exterior.coords)
 
-    
+
 def visualise(coordinates, cluster_type, number = ''):
     """
     Visualise coordinate data using different clustering algorithms and plot them on a map.
@@ -168,16 +168,16 @@ def visualise(coordinates, cluster_type, number = ''):
     midpoint = (lat_avg, long_avg)
 
     #smaller zoom start is more zoomed out
-    m = folium.Map(location=midpoint, zoom_start=7)
+    m = folium.Map(location=midpoint, zoom_start=13)
 
     for cluster in clusters:
         cluster = sort_coordinates(cluster)
         cluster = chaikin(cluster)
-                
+
         # Get city and country name from coordinates of the cluster
         loc = reverse_geocode.search(cluster)[0]['city']+','+reverse_geocode.search(cluster)[0]['country']
-        folium.Polygon(cluster, color='red', fill=True, fill_opacity=0.2).add_to(m)
-        
+        folium.Polygon(cluster, loc,color='red', fill=True, fill_opacity=0.2).add_to(m)
+
         ring_coordinates = get_ring_coordinates(cluster)
         folium.Polygon(ring_coordinates, color='yellow', fill=True, fill_opacity=0.2).add_to(m)
 
