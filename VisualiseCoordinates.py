@@ -137,8 +137,11 @@ def get_ring_coordinates(cluster, buffer_ratio=0.05):
     ring_polygon = buffered_polygon.difference(polygon)
     return list(ring_polygon.exterior.coords)
 
+def calculate_area(coords):
+    polygon = Polygon(coords)
+    return polygon.area
 
-def visualise(coordinates, cluster_type, number = ''):
+def visualise(coordinates, cluster_type, number = '', MIN_AREA_THRESHOLD = 0):
     """
     Visualise coordinate data using different clustering algorithms and plot them on a map.
 
@@ -174,12 +177,19 @@ def visualise(coordinates, cluster_type, number = ''):
         cluster = sort_coordinates(cluster)
         cluster = chaikin(cluster)
 
-        # Get city and country name from coordinates of the cluster
-        loc = reverse_geocode.search(cluster)[0]['city']+','+reverse_geocode.search(cluster)[0]['country']
-        folium.Polygon(cluster, loc,color='red', fill=True, fill_opacity=0.2).add_to(m)
+        area = calculate_area(cluster)
 
-        ring_coordinates = get_ring_coordinates(cluster)
-        folium.Polygon(ring_coordinates, color='yellow', fill=True, fill_opacity=0.2).add_to(m)
+        if area >= MIN_AREA_THRESHOLD:
+            # Get city and country name from coordinates of the cluster
+            if area < 0.01:
+                colour = 'red'
+            else:
+                colour = 'black'
+            loc = reverse_geocode.search(cluster)[0]['city']+','+reverse_geocode.search(cluster)[0]['country']
+            folium.Polygon(cluster, loc, color=colour, fill=True, fill_opacity=0.2).add_to(m)
+
+            ring_coordinates = get_ring_coordinates(cluster)
+            folium.Polygon(ring_coordinates, loc, color='yellow', fill=True, fill_opacity=0.2).add_to(m)
 
     m.save(f'maps/map{number}.html')
 
