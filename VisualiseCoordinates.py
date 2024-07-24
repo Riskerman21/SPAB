@@ -3,6 +3,8 @@ from sklearn.cluster import DBSCAN, MeanShift, OPTICS
 import folium
 from math import atan2
 import reverse_geocode
+from shapely.ops import unary_union, nearest_points
+from shapely.geometry import Polygon, Point, LineString
 
 coordinates = [
     (16.2835000740, 101.8698031800), (16.3057595130, 102.0267518000),
@@ -102,6 +104,40 @@ def get_clusters(coordinates, labels):
         clusters.append(cluster)
     return clusters
 
+def get_buffered_coordinates(cluster, buffer_ratio=0.1):
+    """
+    Get the coordinates of a polygon buffered by a specified ratio of its perimeter.
+
+    Args:
+        cluster (list): A list of tuples representing the coordinates of the polygon vertices.
+        buffer_ratio (float, optional): The ratio of the polygon's perimeter by which to buffer it. 
+                                        Defaults to 0.1.
+
+    Returns:
+        list: A list of tuples representing the coordinates of the buffered polygon.
+    """
+    polygon = Polygon(cluster)
+    buffered_polygon = polygon.buffer(polygon.length * buffer_ratio)
+    return list(buffered_polygon.exterior.coords)
+
+def get_ring_coordinates(cluster, buffer_ratio=0.05):
+    """
+    Get the coordinates of the ring (difference) between a polygon and its buffered version.
+
+    Args:
+        cluster (list): A list of tuples representing the coordinates of the polygon vertices.
+        buffer_ratio (float, optional): The ratio of the polygon's perimeter by which to buffer it. 
+                                        Defaults to 0.05.
+
+    Returns:
+        list: A list of tuples representing the coordinates of the ring polygon.
+    """
+    polygon = Polygon(cluster)
+    buffered_polygon = polygon.buffer(polygon.length * buffer_ratio)
+    ring_polygon = buffered_polygon.difference(polygon)
+    return list(ring_polygon.exterior.coords)
+
+    
 def visualise(coordinates, cluster_type):
     """
     Visualise coordinate data using different clustering algorithms and plot them on a map.
@@ -137,9 +173,13 @@ def visualise(coordinates, cluster_type):
     for cluster in clusters:
         cluster = sort_coordinates(cluster)
         cluster = chaikin(cluster)
+                
         # Get city and country name from coordinates of the cluster
         loc = reverse_geocode.search(cluster)[0]['city']+','+reverse_geocode.search(cluster)[0]['country']
-        folium.Polygon(cluster, loc, color='red', fill=True, fill_opacity=0.1).add_to(m)
+        folium.Polygon(cluster, color='red', fill=True, fill_opacity=0.2).add_to(m)
+        
+        ring_coordinates = get_ring_coordinates(cluster)
+        folium.Polygon(ring_coordinates, color='yellow', fill=True, fill_opacity=0.2).add_to(m)
 
     m.save('map.html')
 
