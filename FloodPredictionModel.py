@@ -43,4 +43,4 @@ for n in range(len(rain_dates)):
     if rain_date in flood_dates:
         for category in rain_data.columns:
             if category != 'datetime':
-                flooddata_dict[rain_date][category] = rain_data[category].iloc[n]
+                flooddata_dict[rain_date] = pd.concat([flooddata_dict[rain_date], pd.DataFrame([rain_data[category]])])
