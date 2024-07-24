@@ -1,5 +1,4 @@
 // maps.js
-
 document.addEventListener('DOMContentLoaded', function() {
     const mapsData = [
         { src: 'map.html', title: 'Day 1' },
@@ -14,13 +13,15 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentIndex = 0;
     let intervalId;
 
-    function updateMap() {
+    function updateMap() { 
         const titleContainer = document.getElementById('map-title-container');
         titleContainer.innerHTML = `<h2>${mapsData[currentIndex].title}</h2>`;
 
         const mapContainer = document.getElementById('map-container');
         mapContainer.innerHTML = `<iframe src="${mapsData[currentIndex].src}" class="w-100" style="height: 75vh;"></iframe>`;
 
+        const slider = document.getElementById('map-slider');
+        slider.value = currentIndex;
         currentIndex = (currentIndex + 1) % mapsData.length;
     }
 
@@ -31,6 +32,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function stopUpdating() {
         clearInterval(intervalId);
     }
+
+
 
     updateMap();
     startUpdating();
@@ -44,5 +47,10 @@ document.addEventListener('DOMContentLoaded', function() {
             startUpdating();
             button.textContent = 'Pause';
         }
+    });
+
+    document.getElementById('map-slider').addEventListener('input', function() {
+        currentIndex = parseInt(this.value);
+        updateMap();
     });
 });
