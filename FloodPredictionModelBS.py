@@ -35,8 +35,6 @@ def split_data():
 
     return features_train_scaled, target_variable_train, features_test_scaled, target_variable_test, scaler
 
-
-
 def model_creation(X_train_scaled):
     model = tf.keras.Sequential([
         tf.keras.layers.Dense(64, activation='relu', input_shape=(X_train_scaled.shape[1],)),
@@ -48,8 +46,6 @@ def model_creation(X_train_scaled):
                 loss='mean_squared_error',
                 metrics=['mae'])
     
-    #Save the model if needed
-    #model.save('precib cover predicition')
     return model
 
 if __name__ == '__main__':
@@ -61,6 +57,7 @@ if __name__ == '__main__':
                         batch_size=32,
                         validation_split=0.2)
 
+    model.save('precib_cover_predicition.h5')
 
     plt.plot(history.history['loss'], label='Training Loss')
     plt.plot(history.history['val_loss'], label='Validation Loss')
