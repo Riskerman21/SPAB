@@ -4,7 +4,7 @@ import pandas as pd
 
 DAYS_TO_PREDICT = ['1', '2', '3', '4', '5', '6', '7']
 
-def scrape_weather():
+def scrape_weather(df):
     base_url = 'https://www.accuweather.com/en/th/bangkok/318849/evening-weather-forecast/318849?day='
     start = 0
 
@@ -46,7 +46,9 @@ def scrape_weather():
             break
         url_weather = f"{base_url}{DAYS_TO_PREDICT[start]}"
 
-def scrape_pressure():
+    return df
+
+def scrape_pressure(df):
     url_pressure = 'https://tides4fishing.com/th/thailand/bangkok/forecast/atmospheric-pressure'
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
@@ -60,19 +62,22 @@ def scrape_pressure():
         html_content = (response.text)
         max_pressure_match = re.findall(max_pressure_pattern, html_content)
         min_pressure_match = re.findall(min_pressure_pattern, html_content)
-        print(max_pressure_match, min_pressure_match)
         avg_pressures = [
             (int(max_pressure_match[i]) + int(min_pressure_match[i])) // 2
             for i in range(len(max_pressure_match))
         ]
 
         for i in range(0, len(min_pressure_match)):
-            df.at[i, 'pressure'] = avg_pressures[i]
+            df.at[i, 'sealevelpressure'] = avg_pressures[i]
+    return df
 
-if __name__ == '__main__':
-    columns = ['humidity', 'precipprob', 'tempmin', 'temp', 'tempmax', 'pressure']
+def main():
+    columns = ["tempmax", "tempmin", "temp", "sealevelpressure", "precipprob", "humidity"]
     df = pd.DataFrame(columns=columns)
-    scrape_weather()
-    scrape_pressure()
+    df = scrape_weather(df)
+    df = scrape_pressure(df)
 
     df.to_excel('ForecastedWeather.xlsx', index=False)
+
+if __name__ == '__main__':
+    main()

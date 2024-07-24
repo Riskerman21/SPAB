@@ -138,7 +138,7 @@ def get_ring_coordinates(cluster, buffer_ratio=0.05):
     return list(ring_polygon.exterior.coords)
 
     
-def visualise(coordinates, cluster_type):
+def visualise(coordinates, cluster_type, number = ''):
     """
     Visualise coordinate data using different clustering algorithms and plot them on a map.
 
@@ -181,6 +181,6 @@ def visualise(coordinates, cluster_type):
         ring_coordinates = get_ring_coordinates(cluster)
         folium.Polygon(ring_coordinates, color='yellow', fill=True, fill_opacity=0.2).add_to(m)
 
-    m.save('map.html')
+    m.save(f'maps/map{number}.html')
 
 visualise(coordinates, 3)

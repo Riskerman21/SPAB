@@ -4,6 +4,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 import tensorflow as tf
 from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
+import pickle
 
 def split_data():
     df = pd.read_excel('merged_data.xlsx')
@@ -57,7 +58,7 @@ if __name__ == '__main__':
                         batch_size=32,
                         validation_split=0.2)
 
-    model.save('precib_cover_predicition.h5')
+    model.save('precib_cover_predicition.keras')
 
     plt.plot(history.history['loss'], label='Training Loss')
     plt.plot(history.history['val_loss'], label='Validation Loss')
@@ -78,3 +79,6 @@ if __name__ == '__main__':
     print(f"Mean Absolute Error: {mae}")
     print(f"Mean Squared Error: {mse}")
     print(f"R² Score: {r2}")
+
+    with open('scaler_model.pkl', 'wb') as file:
+        pickle.dump(scaler, file)
