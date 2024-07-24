@@ -3,54 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thailand Flood Safety Map</title>
+    <title >Thailand Flood Safety Map</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Add CSS styles for the legend and key */
-        .legend-key {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background-color: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .legend-key ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .legend-key li {
-            margin-bottom: 5px;
-        }
-
-        .legend-key span {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            margin-right: 5px;
-        }
-
-        .legend-key .red {
-            background-color: black;
-        }
-
-        .legend-key .blue {
-            background-color: red;
-        }
-
-        .legend-key .green {
-            background-color: yellow;
-        }
-    </style>
 </head>
 <body>
     <!-- Header -->
     <header class="bg-white text-dark pt-3">
         <div class="container">
+            <!-- Add a link to the home page -->
             <h1 class="text-center">Thailand Flood Safety Map</h1>
             <hr class="custom-hr">
         </div>
@@ -59,29 +19,13 @@
     <!-- Main Content -->
     <head>
         <title>Thank You for Signing Up!</title>
-        <script>
-            function sendEmail() {
-                var email = document.getElementById("email").value;
-                // Send the email using AJAX
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "/send_email", true);
-                xhr.setRequestHeader("Content-Type", "application/json");
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState === XMLHttpRequest.DONE) {
-                        if (xhr.status === 200) {
-                            console.log("Email sent successfully");
-                        } else {
-                            console.error("Error sending email: " + xhr.status);
-                        }
-                    }
-                };
-                xhr.send(JSON.stringify({ email: email }));
-            }
-        </script>
     </head>
     <body>
         <h1>Thank You!</h1>
         <p>We have received your signup request. Please check your email for further instructions.</p>
+
+        <!-- Add a link to the home page -->
+        <a href="home.html" class="btn btn-primary">Return Home</a>
     </body>
     <!-- Footer -->
     <footer class="bg-dark text-white py-3 mt-4">
@@ -95,5 +39,16 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="javascript.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Add JavaScript code to handle the link click -->
+    <script>
+        document.querySelector('header img').addEventListener('click', function() {
+            window.location.href = 'home.html';
+        });
+
+        document.querySelector('.btn-primary').addEventListener('click', function() {
+            window.location.href = 'home.html';
+        });
+    </script>
 </body>
 </html>
