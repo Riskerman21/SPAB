@@ -9,7 +9,7 @@ def confusion_anaylsis(df):
     correlation_matrix = df.corr()
 
     precipcover_corr = correlation_matrix[['precipcover']].sort_values(by='precipcover', ascending=False)
-
+    precipcover_corr = precipcover_corr[abs(precipcover_corr) > 0.2].dropna()
     print(precipcover_corr)
 
     plt.figure(figsize=(10, 6))
