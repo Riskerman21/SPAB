@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
-
     updateMap();
     startUpdating();
 
@@ -53,4 +52,28 @@ document.addEventListener('DOMContentLoaded', function() {
         currentIndex = parseInt(this.value);
         updateMap();
     });
+    document.getElementById('signup-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+        var email = document.getElementById('email').value;
+    
+        // Send the email to the server using AJAX
+        fetch('http://127.0.0.1:5000/send_email', {  // Ensure this URL is correct
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: email })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.message);
+    
+            // Switch to signup.html
+            window.location.href = 'signup.html';
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    });
+
 });
