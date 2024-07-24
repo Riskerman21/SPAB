@@ -70,7 +70,6 @@ def scrape_pressure():
             df.at[i, 'pressure'] = avg_pressures[i]
 
 if __name__ == '__main__':
-    # Base dataframe to be adding to 
     columns = ['humidity', 'precipprob', 'tempmin', 'temp', 'tempmax', 'pressure']
     df = pd.DataFrame(columns=columns)
     scrape_weather()
