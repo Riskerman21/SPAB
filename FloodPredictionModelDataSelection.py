@@ -17,8 +17,7 @@ for filename in os.listdir(directory):
 
             date_obj = datetime.strptime(filename_without_extension, "%Y%m%d")
             formatted_date = date_obj.strftime("%Y-%m-%d")
-            file['Date'] = formatted_date
-            
+            file['Date'] = formatted_date            
             flooddata_list.append(file)
 
 flooddata_df = pd.concat(flooddata_list, ignore_index=True)
