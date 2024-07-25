@@ -33,34 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(intervalId);
     }
 
-
     updateMap();
-
-    
-    // Fetch province and amphoe data from the JSON file
-    $.getJSON('province_amphoe.json', function(data) {
-        var provinceData = data; // Store the province data
-
-        var provinces = Object.keys(provinceData);
-        $('#province').empty();
-        $('#province').append('<option value="">Select a province</option>');
-        provinces.forEach(function(province) {
-            $('#province').append('<option value="' + province + '">' + province + '</option>');
-        });
-
-        $('#province').on('change', function() {
-            var selectedProvince = $(this).val();
-            var amphoes = provinceData[selectedProvince] || [];
-
-            $('#amphoe').empty();
-            $('#amphoe').append('<option value="">Select an amphoe</option>');
-
-            amphoes.forEach(function(amphoe) {
-                $('#amphoe').append('<option value="' + amphoe + '">' + amphoe + '</option>');
-            });
-        });
-    });
-
 
     console.log('Maps initialized');
     document.getElementById('pause-button').addEventListener('click', function() {
@@ -100,34 +73,6 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch((error) => {
             console.error('Error:', error);
-        });
-    });
- 
-    document.getElementById('predict-button').addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent the default form submission behavior
-    
-        var amphoe = document.getElementById('amphoe').value;
-        var province = document.getElementById('province').value;
-        var month = document.getElementById('month').value;
-    
-        // Send an AJAX request to the server to predict the flood risk
-        $.ajax({
-            url: 'http://127.0.0.1:5000/long_predict',
-            type: 'POST',
-            data: JSON.stringify({
-                month: month,
-                amphoe: amphoe,
-                province: province
-            }),
-            contentType: 'application/json',
-            success: function(response) {
-                console.log(response);
-                const riskContainer = document.getElementById('risk-container');
-                riskContainer.innerHTML = `<h2>Predicted Risk: ${data.risk}</h2>`;
-            },
-            error: function(xhr, status, error) {
-                console.error(xhr.responseText);
-            }
         });
     });    
 });
