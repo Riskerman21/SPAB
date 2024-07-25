@@ -56,10 +56,8 @@ def predict_flood_risk(months: int, amphoe: str, province: str) -> str:
     predicted_risk_categories = [inverse_risk_mapping[pred] for pred in predicted_classes]
     return predicted_risk_categories[0]
 
-
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
-
 
 @app.route('/send_email', methods=['POST'])
 def send_email():
@@ -91,14 +89,17 @@ Please reply to this email for feedback or any questions you may have.
 
 @app.route('/long_predict', methods=['POST'])
 def long_predict():
-    data = request.json
+    #data = request.json
+
     # Extract the necessary input data for the long predict model
-    input_data = [data['months'], data['amphoe'], data['province']]  # Replace with actual input fields
+    months = request.args.get('month')
+    amphoe = request.args.get('amphoe')
+    province = request.args.get('province')
+    # Call your prediction function
+    predictions = predict_flood_risk(months, amphoe, province)
 
-    predict_flood_risk(input_data)
     # Return the predictions as a JSON response
-    return jsonify({"prediction"}), 200
+    return jsonify({"predictions": predictions}), 200
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+app.run(debug=True)
