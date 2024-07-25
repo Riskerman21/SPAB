@@ -6,6 +6,7 @@ import en_core_web_sm
 import pandas as pd
 from long_perdict import predict_flood_risk
 from dateutil import parser
+from datetime import datetime
 
 month_number_to_name = {
     1: 'January',
@@ -49,13 +50,18 @@ class process_text():
         return self.message
     
     def question_asked(self,text):
+        if 'advice' in text.lower() or 'event' in text.lower() or 'do' in text.lower():
+            return f"Gather supplies, including non-perishable foods, cleaning supplies, and water for several days, in case you must leave immediately or if services are cut off in your area. Keep important documents in a waterproof container."
+
         doc = self.nlp_model(text)
         
         provence_changed = False
         amphoe_changed = False
         date_changed = False
 
+
         for ent in doc.ents:
+            print(ent)
             text = ent.text.replace(',', '').replace('.', '')
 
             if text in self.PROVINCES:
@@ -74,16 +80,27 @@ class process_text():
                 except:
                     self.date = datetime.now().month
 
-        print(self.province, self.amphoe, self.date)
-        if provence_changed and amphoe_changed and date_changed:
+        print(self.province, self.amphoe)
+        if provence_changed and amphoe_changed:
+            addition = ""
+            if self.date is None:
+                self.date = datetime.now().month
+                addition = "To enquire about a specific month please enter a date."
+
             prediction = predict_flood_risk(self.date, self.amphoe, self.province)
-            return f"Great, Ill find that prediction for you using {self.amphoe}, {self.province} and {month_number_to_name[self.date]}.\r\n" + \
-            f"The probability is {prediction}"
+            return f"Great, Ill find that prediction for you using {self.amphoe}, {self.province} and {month_number_to_name[self.date]}.\r\n {addition}\r\n" + \
+            f"The probability is {prediction}!" 
         
         elif provence_changed or amphoe_changed:
             return f"Please enter both the provence and amphoe you would like to check was well as a date."
+
+        else:
+            return f"I'm not quite sure what you have asked of me. To get general advice ask about general advice.\r\n" + \
+            "To find about your area ask about your amphoe, provence and a date you would like to enquire about."
         
 
 chatbot = process_text()
-print(chatbot.question_asked("I am located at Chiang Mai, Mueang Chiang Mai, Bangkok what are the chances of flooding on 25 July 2024"))
+print(chatbot.question_asked("I am located at Chiang Mai, Mueang Chiang Mai, Bangkok what are the chances of flooding"))
+print(chatbot.question_asked("What is the current advice"))
+
 
