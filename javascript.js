@@ -1,13 +1,13 @@
 // maps.js
 document.addEventListener('DOMContentLoaded', function() {
     const mapsData = [
-        { src: 'maps/map0.html', title: 'Fri 26 Jul, 2024' },
-        { src: 'maps/map1.html', title: 'Sat 27 Jul, 2024' },
-        { src: 'maps/map2.html', title: 'Sun 28 Jul, 2024' },
-        { src: 'maps/map3.html', title: 'Mon 29 Jul, 2024' },
-        { src: 'maps/map4.html', title: 'Tue 30 Jul, 2024' },
-        { src: 'maps/map5.html', title: 'Wed 31 Jul, 2024' },
-        { src: 'maps/map6.html', title: 'Thu 1 Aug, 2024' }
+        { src: 'maps/map0.html', title: 'Day 1' },
+        { src: 'maps/map1.html', title: 'Day 2' },
+        { src: 'maps/map2.html', title: 'Day 3' },
+        { src: 'maps/map3.html', title: 'Day 4' },
+        { src: 'maps/map4.html', title: 'Day 5' },
+        { src: 'maps/map5.html', title: 'Day 6' },
+        { src: 'maps/map6.html', title: 'Day 7' }
     ];
 
     let currentIndex = 0;
@@ -32,7 +32,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function stopUpdating() {
         clearInterval(intervalId);
     }
-    // Load Amphoe options from amphoe_list.csv
+
+
+    updateMap();
     $.get('./ChatBotData/amphoe_list.csv', function(data) {
         var amphoes = data.split('\n');
         console.log(amphoes);
@@ -50,36 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    document.getElementById('predict-button').addEventListener('click', predictRisk);
-
-    function predictRisk() {
-        // Your function logic here
-        alert("Predict Risk button pressed!");
-        var amphoe = document.getElementById('amphoe').value;
-        var province = document.getElementById('province').value;
-        var month = document.getElementById('month').value;
-
-        // Send an AJAX request to the server to predict the flood risk
-        $.ajax({
-            url: '/long_predict',
-            type: 'POST',
-            data: {
-                amphoe: amphoe,
-                province: province,
-                month: month
-            },
-            success: function(response) {
-                // Handle the response from the server
-                console.log('Flood risk prediction:', response);
-                // Update the UI with the predicted risk information
-            },
-            error: function(error) {
-                // Handle any errors that occur during the AJAX request
-                console.error('Error:', error);
-            }
-        });
-    }
-    updateMap();
+    
     console.log('Maps initialized');
     document.getElementById('pause-button').addEventListener('click', function() {
         const button = this;
@@ -119,7 +92,5 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Error:', error);
         });
 
-        
-      
-            });
-        });
+    });
+});
