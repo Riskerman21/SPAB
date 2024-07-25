@@ -73,26 +73,45 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch((error) => {
             console.error('Error:', error);
         });
+    // Add an event listener to the flood risk form
     document.getElementById('flood-risk-form').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent the default form submission behavior
+        event.preventDefault();// Prevent the form from submitting
+
+        // Get the form input values
         var amphoe = document.getElementById('amphoe').value;
         var province = document.getElementById('province').value;
         var month = document.getElementById('month').value;
 
-        // Send the user input to the server using AJAX
-        fetch('http://127.0.0.1:5000/long_perdict', {  // Ensure this URL is correct
+        // Send an AJAX request to the '/long_predict' endpoint
+        fetch('/long_predict', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ month: month, amphoe: amphoe, province: province})
+            body: JSON.stringify({
+                amphoe: amphoe,
+                province: province,
+                month: month
+            })
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data.risk);
+            // Handle the response data
+            var predictions = data.predictions;
+            console.log(predictions); // Log the predictions to the console
+    
+            // Update the website UI with the predictions
+            var predictionContainer = document.getElementById('prediction-container');
+            predictionContainer.innerHTML = ''; // Clear any existing content
+    
+            predictions.forEach(prediction => {
+                var predictionElement = document.createElement('p');
+                predictionElement.textContent = prediction;
+                predictionContainer.appendChild(predictionElement);
+            });
         })
-        .catch((error) => {
-            console.error('Error:', error);
+        .catch(error => {
+            console.error('Error:', error); // Log any errors to the console
         });
     });
     });
