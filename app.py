@@ -87,7 +87,6 @@ class process_text():
                 except:
                     self.date = datetime.now().month
 
-        print(self.province, self.amphoe)
         if provence_changed and amphoe_changed:
             addition = ""
             if self.date is None:
@@ -109,9 +108,6 @@ class process_text():
 # chatbot = process_text()
 # print(chatbot.question_asked("I am in a foreign country, where do i go"))
 # print(chatbot.question_asked("What is the current advice"))
-
-
-
 
 # Load the saved model
 def predict_flood_risk(months: int, amphoe: str, province: str) -> str:
@@ -197,24 +193,16 @@ Please reply to this email for feedback or any questions you may have.
 @app.route('/long_predict', methods=['POST'])
 def long_predict():
     data = request.json
-
-    # Extract the necessary input data for the long predict model
     months = int(data['month'])
     amphoe = str(data['amphoe'])
     province = str(data['province'])
-    # Call your prediction function
     predictions = predict_flood_risk(months, amphoe, province)
-
-    # Return the predictions as a JSON response
     return jsonify({"predictions": predictions}), 200
+
 @app.route('/send_to_bot', methods=['POST'])
-
 def send_to_bot():
-
     user_input = request.json.get('message')
-
     chatbot = process_text()
-
-    return jsonify(chatbot.question_asked(user_input) )
+    return jsonify({'answer': chatbot.question_asked(user_input)}), 200
 
 app.run(debug=True)
