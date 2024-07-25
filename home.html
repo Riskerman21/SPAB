@@ -27,6 +27,7 @@
                 
             </div>
         </div>
+
         <div class="row">
             <div class="col-md-12">
                 <div id="map-container"></div>
@@ -40,11 +41,14 @@
             </div>
         </div>
 
+        <br></br>
+
         <div class="row">
             <div class="col-4 text-left">
                 <button id="pause-button" class="btn btn-primary">Resume</button>
             </div>
         </div>
+
         <br></br>
 
         <div class="row">
@@ -99,22 +103,22 @@
             </div>
         </section>
 
-    </main>
-    <!-- Chatbot Overlay -->
-    <div class="chatbot-overlay" id="chatbot-overlay">
-        <div class="modal-header" style="background-color: gray; color: #ffffff;">
-            <h5 class="modal-title" id="botModalLabel"><span style="font-weight: bold;">SPAB</span></h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="toggleChatbot()"></button>
-        </div>
-        <div class="modal-body">
-            <div id="chatbox">
-                <div id="chat-content"></div>
-                <input type="text" id="user-input" class="form-control" placeholder="Type your message...">
-                <button class="btn btn-danger mt-3" style="height: 40px; background-color: gray; color: #ffffff;" onclick="sendMessage()">Send</button>
+        <!-- Chatbot Overlay -->
+        <div class="chatbot-overlay" id="chatbot-overlay">
+            <div class="modal-header" style="background-color: gray; color: #ffffff;">
+                <h5 class="modal-title" id="botModalLabel"><span style="font-weight: bold;">SPAB</span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="toggleChatbot()"></button>
+            </div>
+            <div class="modal-body">
+                <div id="chatbox">
+                    <div id="chat-content"></div>
+                    <input type="text" id="user-input" class="form-control" placeholder="Type your message...">
+                    <button class="btn btn-danger mt-3" style="height: 40px; background-color: gray; color: #ffffff;" onclick="sendMessage()">Send</button>
+                </div>
             </div>
         </div>
-    </div>
-    <button class="chatbot-toggle" onclick="toggleChatbot()">💬</button>
+        <button class="chatbot-toggle" onclick="toggleChatbot()">💬</button>
+    </main>
 
     <!-- Footer -->
     <footer class="bg-dark text-white py-3 mt-4">
