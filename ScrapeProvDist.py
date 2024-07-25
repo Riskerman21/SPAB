@@ -75,6 +75,33 @@ dict = {'Sakon Nakhon': ['Akat Amnuai', 'Ban Muang', 'Charoen Sin', 'Kham Ta Kla
         'Nong Bua Lamphu': ['Mueang Nongbua Lamphu', 'Na Klang', 'Na Wang', 'Non Sang', 'Si Bun Rueang', 'Suwannakhuha']
     }
 
-# Save the dictionary to a JSON file
-with open('province_amphoe.json', 'w') as json_file:
-    json.dump(dict, json_file)
+import pandas as pd
+
+# Load the CSV file into a DataFrame
+df = pd.read_csv('monthly_flood_risk_area.csv')
+provinces_amphoes = df[['PROV_E', 'AMPHOE_E']]
+unique_rows = provinces_amphoes.drop_duplicates()
+
+unique_rows_tuples = [tuple(x) for x in unique_rows.to_numpy()]
+
+new_dict = {}
+
+for tuple in unique_rows_tuples:
+    item1 = tuple[0]
+    item2 = tuple[1]
+
+    if item1 in new_dict:
+        new_dict[item1].append(item2)
+    else:
+        new_dict[item1] = [item2,]
+
+print(new_dict)
+# 
+# for province in dict:
+#     for amphoe in dict[province]:
+#         exists = not df[(df['PROV_E'] == province) & (df['AMPHOE_E'] == amphoe)].empty
+
+#         print(exists)
+
+
+
