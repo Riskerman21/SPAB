@@ -32,11 +32,53 @@ document.addEventListener('DOMContentLoaded', function() {
     function stopUpdating() {
         clearInterval(intervalId);
     }
-
-    document.addEventListener('DOMContentLoaded', (event) => {
-        document.getElementById('predict-risk-button').addEventListener('click', predictRisk);
+    // Load Amphoe options from amphoe_list.csv
+    $.get('./ChatBotData/amphoe_list.csv', function(data) {
+        var amphoes = data.split('\n');
+        console.log(amphoes);
+        amphoes.forEach(function(amphoe) {
+            $('#amphoe').append('<option value="' + amphoe + '">' + amphoe + '</option>');
+        });
     });
 
+    // Load Province options from province_list.csv
+    $.get('./ChatBotData/province_list.csv', function(data) {
+        var provinces = data.split('\n');
+        console.log(provinces);
+        provinces.forEach(function(province) {
+            $('#province').append('<option value="' + province + '">' + province + '</option>');
+        });
+    });
+
+    document.getElementById('predict-button').addEventListener('click', predictRisk);
+
+    function predictRisk() {
+        // Your function logic here
+        alert("Predict Risk button pressed!");
+        var amphoe = document.getElementById('amphoe').value;
+        var province = document.getElementById('province').value;
+        var month = document.getElementById('month').value;
+
+        // Send an AJAX request to the server to predict the flood risk
+        $.ajax({
+            url: '/long_predict',
+            type: 'POST',
+            data: {
+                amphoe: amphoe,
+                province: province,
+                month: month
+            },
+            success: function(response) {
+                // Handle the response from the server
+                console.log('Flood risk prediction:', response);
+                // Update the UI with the predicted risk information
+            },
+            error: function(error) {
+                // Handle any errors that occur during the AJAX request
+                console.error('Error:', error);
+            }
+        });
+    }
     updateMap();
     console.log('Maps initialized');
     document.getElementById('pause-button').addEventListener('click', function() {
@@ -78,33 +120,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         
-        function predictRisk() {
-            // Your function logic here
-            alert("Predict Risk button pressed!");
-            var amphoe = document.getElementById('amphoe').value;
-            var province = document.getElementById('province').value;
-            var month = document.getElementById('month').value;
-        
-            // Send an AJAX request to the server to predict the flood risk
-            $.ajax({
-                url: '/long_predict',
-                type: 'POST',
-                data: {
-                    amphoe: amphoe,
-                    province: province,
-                    month: month
-                },
-                success: function(response) {
-                    // Handle the response from the server
-                    console.log('Flood risk prediction:', response);
-                    // Update the UI with the predicted risk information
-                },
-                error: function(error) {
-                    // Handle any errors that occur during the AJAX request
-                    console.error('Error:', error);
-                }
+      
             });
-        }
-
-    });
-});
+        });
