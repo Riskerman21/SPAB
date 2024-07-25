@@ -22,7 +22,7 @@ print(df[['RISK', 'RISK_encoded']].drop_duplicates())
 #Encoding RISK
 encoder = OneHotEncoder()
 
-categorical_columns = ['AMPHOE_E', 'PROV_E', 'CRITERIA']
+categorical_columns = ['AMPHOE_E', 'PROV_E']
 encoded_data = encoder.fit_transform(df[categorical_columns])
 
 encoded_df = pd.DataFrame(encoded_data.toarray(), columns=encoder.get_feature_names_out(categorical_columns))
@@ -51,7 +51,7 @@ model.compile(optimizer='adam',
               metrics=['accuracy'])
 
 history = model.fit(X_train_scaled, y_train,
-                    epochs=50,
+                    epochs=500,
                     batch_size=32,
                     validation_split=0.2)
 
@@ -65,4 +65,3 @@ plt.legend()
 plt.show()
 
 results = model.evaluate(X_test_scaled, y_test)
-print(f"Test Loss, Test Accuracy: {results}")

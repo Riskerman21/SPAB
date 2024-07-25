@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     updateMap();
-    startUpdating();
 
     document.getElementById('pause-button').addEventListener('click', function() {
         const button = this;
@@ -74,6 +73,28 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch((error) => {
             console.error('Error:', error);
         });
+    document.getElementById('flood-risk-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+        var amphoe = document.getElementById('amphoe').value;
+        var province = document.getElementById('province').value;
+        var month = document.getElementById('month').value;
+
+        // Send the user input to the server using AJAX
+        fetch('http://127.0.0.1:5000/long_perdict', {  // Ensure this URL is correct
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ month: month, amphoe: amphoe, province: province})
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.risk);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    });
     });
 
 });

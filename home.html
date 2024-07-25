@@ -65,6 +65,11 @@
             <div class="col-md-2 col-4 text-right">
                 <button id="pause-button" class="btn btn-primary">Pause</button>
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="range" id="map-slider" min="0" max="6" step="1">
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -78,11 +83,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <input type="range" id="map-slider" min="0" max="6" step="1">
-            </div>
-        </div>
+
         <div class="row">
             <div class="col-md-12">
                 <h2 class="text-center">Sign Up for Push Alerts</h2>
@@ -95,7 +96,36 @@
                 </form>
             </div>
         </div>
+        <section class="container mt-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="text-center">Predict Flood Risk</h2>
+                    <form id="flood-risk-form">
+                        <div class="form-group">
+                            <label for="amphoe">Amphoe (District)</label>
+                            <input type="text" class="form-control" id="amphoe" name="amphoe" required>
+                            <option value="1">Sai Noi District</option>
+                        </div>
+                        <div class="form-group">
+                            <label for="province">Province</label>
+                            <input type="text" class="form-control" id="province" name="province" required>
+                            <option value="1">Nonthaburi</option>
+                        </div>
+                        <div class="form-group">
+                            <label for="month">Month</label>
+                            <select class="form-control" id="month" name="month" required>
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                                <!-- Add more options for other months -->
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Predict Risk</button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
+    
 
     <!-- Footer -->
     <footer class="bg-dark text-white py-3 mt-4">
