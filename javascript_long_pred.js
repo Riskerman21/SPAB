@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 case 'Low Risk':
                     widthPercentage = 18; // Set the desired width for low risk
                     break;
-                case 'Medium Risk':
+                case 'Moderate Risk':
                     widthPercentage = 50; // Set the desired width for medium risk
                     break;
                 case 'High Risk':
