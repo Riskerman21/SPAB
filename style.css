@@ -2,3 +2,53 @@
     border: 1px solid lightgrey;
     margin: 0.5% 0;
 }
+
+.btn-primary {
+    background-color: lightgrey;
+    border: none;
+    color: black; /* Optional: Set text color to contrast with the background */
+}
+
+.btn-primary:hover {
+    background-color: darkgrey; /* Slightly darker grey for hover effect */
+    border: none;
+}
+
+.legend-key {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.legend-key ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.legend-key li {
+    margin-bottom: 5px;
+}
+
+.legend-key span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+}
+
+.legend-key .red {
+    background-color: black;
+}
+
+.legend-key .blue {
+    background-color: red;
+}
+
+.legend-key .green {
+    background-color: yellow;
+}
