@@ -51,7 +51,8 @@ class process_text():
     
     def question_asked(self,text):
         if 'advice' in text.lower() or 'event' in text.lower() or 'do' in text.lower():
-            return f"Gather supplies, including non-perishable foods, cleaning supplies, and water for several days, in case you must leave immediately or if services are cut off in your area. Keep important documents in a waterproof container."
+            return f"Gather supplies, including non-perishable foods, cleaning supplies, and water for several days, in case you must leave immediately or if services are cut off in your area. Keep important documents in a waterproof container.\r\n" +\
+            "If you require urgent help call 1460. You can read any extreme weather warnings via the Thai Meteorological Department (TMD) (กองพยากรณ์อากาศ) or call them on 1182."
 
         doc = self.nlp_model(text)
         
