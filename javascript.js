@@ -163,5 +163,56 @@ document.addEventListener('DOMContentLoaded', function() {
         
     }
 
+    async function sendMessage() {
+        const userInput = document.getElementById('user-input').value;
+        const chatContent = document.getElementById('chat-content');
+
+        // Add user's message to the chat
+        const userMessageDiv = document.createElement('div');
+        userMessageDiv.textContent = userInput;
+        chatContent.appendChild(userMessageDiv);
+
+        // Style "You: " part separately
+        const youSpan = document.createElement('span');
+        youSpan.textContent = 'You: ';
+        youSpan.style.fontWeight = 'bold';  // Apply bold font weight
+        userMessageDiv.insertBefore(youSpan, userMessageDiv.firstChild);  // Insert "You: " at the beginning of userMessageDiv
+
+        // Send user's message to the server
+        const response = await fetch('/send_to_bot', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ message: userInput })
+        });
+
+        const responseData = await response.json();
+
+        // Add bot's response to the chat
+        const botMessageDiv = document.createElement('div');
+        const botResponse = responseData.response;
+
+        // Creating elements and applying styles
+        const steveSpan = document.createElement('span');
+        steveSpan.textContent = 'SPAB: ';
+        steveSpan.style.fontWeight = 'bold';  // Make "Steve" bold
+
+        const responseSpan = document.createElement('span');
+        responseSpan.textContent = botResponse;
+
+        // Add both spans to the div
+        botMessageDiv.appendChild(steveSpan);
+        botMessageDiv.appendChild(responseSpan);
+
+        // Add botMessageDiv to chatContent (assuming chatContent is your chat area)
+        chatContent.appendChild(botMessageDiv);
+
+        // Scroll to the bottom of the chat content
+        chatContent.scrollTop = chatContent.scrollHeight;
+
+        // Clear the input field
+        document.getElementById('user-input').value = '';
+    }
     
 });

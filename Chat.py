@@ -101,7 +101,7 @@ class process_text():
         
 
 chatbot = process_text()
-print(chatbot.question_asked("I am located at Chiang Mai, Mueang Chiang Mai, Bangkok what are the chances of flooding"))
+print(chatbot.question_asked("I am in a foreign country, where do i go"))
 print(chatbot.question_asked("What is the current advice"))
 
 
