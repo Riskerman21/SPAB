@@ -174,7 +174,7 @@ def visualise(coordinates, cluster_type, number = '', MIN_AREA_THRESHOLD = 0):
     midpoint = (lat_avg, long_avg)
 
     #smaller zoom start is more zoomed out
-    m = folium.Map(location=midpoint, zoom_start=13)
+    m = folium.Map(location=midpoint, zoom_start=7)
 
     for cluster in clusters:
         cluster = sort_coordinates(cluster)
@@ -187,9 +187,9 @@ def visualise(coordinates, cluster_type, number = '', MIN_AREA_THRESHOLD = 0):
             result_df = pd.merge(coords_df, df, on=['lat', 'long'], how='left')
             average_pred = result_df['pred'].mean()
 
-            if average_pred > 0:
+            if average_pred > 0.1:
                 # Get city and country name from coordinates of the cluster
-                if average_pred <= 3.5:
+                if average_pred <= 2.5:
                     colour = 'red'
                 else:
                     colour = 'black'
