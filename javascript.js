@@ -35,22 +35,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     updateMap();
-    $.get('./ChatBotData/amphoe_list.csv', function(data) {
-        var amphoes = data.split('\n');
-        console.log(amphoes);
-        amphoes.forEach(function(amphoe) {
-            amphoe = amphoe.substring(0, amphoe.length - 1);
-            $('#amphoe').append('<option value="' + amphoe + '">' + amphoe + '</option>');
-        });
-    });
 
-    // Load Province options from province_list.csv
-    $.get('./ChatBotData/province_list.csv', function(data) {
-        var provinces = data.split('\n');
-        console.log(provinces);
+    
+    // Fetch province and amphoe data from the JSON file
+    $.getJSON('province_amphoe.json', function(data) {
+        var provinceData = data; // Store the province data
+
+        var provinces = Object.keys(provinceData);
+        $('#province').empty();
+        $('#province').append('<option value="">Select a province</option>');
         provinces.forEach(function(province) {
-            province = province.substring(0, province.length - 1);
             $('#province').append('<option value="' + province + '">' + province + '</option>');
+        });
+
+        $('#province').on('change', function() {
+            var selectedProvince = $(this).val();
+            var amphoes = provinceData[selectedProvince] || [];
+
+            $('#amphoe').empty();
+            $('#amphoe').append('<option value="">Select an amphoe</option>');
+
+            amphoes.forEach(function(amphoe) {
+                $('#amphoe').append('<option value="' + amphoe + '">' + amphoe + '</option>');
+            });
         });
     });
 
