@@ -115,8 +115,8 @@ document.addEventListener('DOMContentLoaded', function() {
             contentType: 'application/json',
             success: function(response) {
                 console.log(response);
-                const riskContainer = document.getElementById('risk-container');
-                riskContainer.innerHTML = `<h2>Predicted Risk: ${data.risk}</h2>`;
+                var predictedRisk = response.predictions;
+                alert(`Predicted Flood Risk: ${predictedRisk}`);
             },
             error: function(xhr, status, error) {
                 console.error(xhr.responseText);
