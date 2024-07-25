@@ -5,47 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thailand Flood Safety Map</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Add CSS styles for the legend and key */
-        .legend-key {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background-color: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .legend-key ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .legend-key li {
-            margin-bottom: 5px;
-        }
-
-        .legend-key span {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            margin-right: 5px;
-        }
-
-        .legend-key .red {
-            background-color: black;
-        }
-
-        .legend-key .blue {
-            background-color: red;
-        }
-
-        .legend-key .green {
-            background-color: yellow;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Header -->
@@ -59,11 +19,12 @@
     <!-- Main Content -->
     <main class="container mt-4">
         <div class="row align-items-center">
-            <div class="col-md-10 col-8 text-left">
+            <div class="col-8 text-left">
                 <div id="map-title-container"></div>
             </div>
-            <div class="col-md-2 col-4 text-right">
-                <button id="pause-button" class="btn btn-primary">Pause</button>
+            <div class="col-4 text-right">
+                <input type="range" id="map-slider" min="0" max="6" step="1" class="w-100">
+                
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -83,6 +44,13 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-4 text-left">
+                <button id="pause-button" class="btn btn-primary">Pause</button>
+            </div>
+        </div>
+
 
         <div class="row">
             <div class="col-md-12">

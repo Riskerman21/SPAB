@@ -28,6 +28,7 @@ if __name__ == "__main__":
 
     # Get each day separated into its own df 
     splits = [scaled_df.iloc[i * len(coordinates):(i + 1) * len(coordinates)] for i in range(len(weather_forecast))]
+    print(splits[-1])
 
     # Load the prediction model
     model = tf.keras.models.load_model('precib_cover_predicition.keras')
@@ -44,12 +45,13 @@ if __name__ == "__main__":
     'pred': all_preds.flatten()  
     })
 
+    result_df = abs(result_df)
     result_df['pred'] = np.log1p(result_df['pred'])
     result_df['pred'] = result_df['pred'] - min(result_df['pred'])
 
     splits = [result_df.iloc[i * len(coordinates):(i + 1) * len(coordinates)] for i in range(len(weather_forecast))]
     for i, split in enumerate(splits):
         visualise(split, 3, i, 0.0006)
-    
+
 
     

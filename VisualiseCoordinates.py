@@ -5,6 +5,7 @@ from math import atan2
 import reverse_geocode
 from shapely.ops import unary_union, nearest_points
 from shapely.geometry import Polygon, Point, LineString
+import pandas as pd
 
 coordinates = [
     (16.2835000740, 101.8698031800), (16.3057595130, 102.0267518000),
@@ -149,7 +150,9 @@ def visualise(coordinates, cluster_type, number = '', MIN_AREA_THRESHOLD = 0):
     coordinates (list of lists): List of coordinate pairs [x, y].
     cluster_type (int): Type of clustering algorithm to use (1: DBSCAN, 2: Mean Shift, 3: OPTICS).
     """
+    df = coordinates.copy()
     coordinates = np.array(coordinates)
+    coordinates = coordinates[:, :2]
 
     if cluster_type == 1:
         dbscan = DBSCAN(eps=0.1, min_samples=3).fit(coordinates)
@@ -171,26 +174,30 @@ def visualise(coordinates, cluster_type, number = '', MIN_AREA_THRESHOLD = 0):
     midpoint = (lat_avg, long_avg)
 
     #smaller zoom start is more zoomed out
-    m = folium.Map(location=midpoint, zoom_start=13)
+    m = folium.Map(location=midpoint, zoom_start=7)
 
     for cluster in clusters:
         cluster = sort_coordinates(cluster)
-        cluster = chaikin(cluster)
+        cluster_smoothed = chaikin(cluster)
 
-        area = calculate_area(cluster)
+        area = calculate_area(cluster_smoothed)
 
         if area >= MIN_AREA_THRESHOLD:
-            # Get city and country name from coordinates of the cluster
-            if area < 0.01:
-                colour = 'red'
-            else:
-                colour = 'black'
-            loc = reverse_geocode.search(cluster)[0]['city']+','+reverse_geocode.search(cluster)[0]['country']
-            folium.Polygon(cluster, loc, color=colour, fill=True, fill_opacity=0.2).add_to(m)
+            coords_df = pd.DataFrame(cluster, columns=['lat', 'long'])
+            result_df = pd.merge(coords_df, df, on=['lat', 'long'], how='left')
+            average_pred = result_df['pred'].mean()
 
-            ring_coordinates = get_ring_coordinates(cluster)
-            folium.Polygon(ring_coordinates, loc, color='yellow', fill=True, fill_opacity=0.2).add_to(m)
+            if average_pred > 0.1:
+                # Get city and country name from coordinates of the cluster
+                if average_pred <= 2.5:
+                    colour = 'red'
+                else:
+                    colour = 'black'
+
+                loc = reverse_geocode.search(cluster_smoothed)[0]['city']+','+reverse_geocode.search(cluster_smoothed)[0]['country']
+                folium.Polygon(cluster_smoothed, loc, color=colour, fill=True, fill_opacity=0.2).add_to(m)
+
+                ring_coordinates = get_ring_coordinates(cluster_smoothed)
+                folium.Polygon(ring_coordinates, loc, color='yellow', fill=True, fill_opacity=0.2).add_to(m)
 
     m.save(f'maps/map{number}.html')
-
-visualise(coordinates, 3)
