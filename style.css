@@ -282,7 +282,8 @@ body {
 
 .current-risk {
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.2); /* Grey color for the current risk level */
+    width: 0%; 
+    background-color: rgba(0, 0, 0, 0.2);
     position: absolute;
     top: 0;
     left: 0;
