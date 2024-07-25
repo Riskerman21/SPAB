@@ -99,90 +99,89 @@
     z-index: 1000;
 }
 
-       /* Add CSS styles for the legend and key */
-       .legend-key {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        background-color: #fff;
-        padding: 10px;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    }
+    .legend-key {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
 
-    .legend-key ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-    }
+.legend-key ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
 
-    .legend-key li {
-        margin-bottom: 5px;
-    }
+.legend-key li {
+    margin-bottom: 5px;
+}
 
-    .legend-key span {
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        margin-right: 5px;
-    }
+.legend-key span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+}
 
-    .legend-key .red {
-        background-color: black;
-    }
+.legend-key .red {
+    background-color: black;
+}
 
-    .legend-key .blue {
-        background-color: red;
-    }
+.legend-key .blue {
+    background-color: red;
+}
 
-    .legend-key .green {
-        background-color: yellow;
-    }
+.legend-key .green {
+    background-color: yellow;
+}
 
-    #pause-button, #bottom-right-button {
-        position: absolute;
-        background-color: gray;
-        color: white;
-        padding: 10px 32px;
-        border: none;
-        font-size: 16px;
-        z-index: 10; /* Ensure the button is on top */
-    }
+#pause-button, #bottom-right-button {
+    position: absolute;
+    background-color: gray;
+    color: white;
+    padding: 10px 32px;
+    border: none;
+    font-size: 16px;
+    z-index: 10; /* Ensure the button is on top */
+}
 
-    #pause-button {
-        bottom: 10px;
-        left: 10px;
-    }
+#pause-button {
+    bottom: 10px;
+    left: 10px;
+}
 
-    #bottom-right-button {
-        bottom: 10px;
-        right: 10px;
-    }
+#bottom-right-button {
+    bottom: 10px;
+    right: 10px;
+}
 
-    #map-container {
-        position: relative;
-        height: 500px; /* Set a height for the map */
-    }
+#map-container {
+    position: relative;
+    height: 500px; /* Set a height for the map */
+}
 
-    .custom-hr {
-        border: 2px solid lightgrey; /* Adjust the thickness here */
-        margin: 0.5% 0;
-    }
+.custom-hr {
+    border: 2px solid lightgrey; /* Adjust the thickness here */
+    margin: 0.5% 0;
+}
 
-    .chatbot-overlay {
-        position: fixed;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 300px;
-        height: 400px;
-        background-color: white;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-        display: none; /* Hidden by default */
-    }
+.chatbot-overlay {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    height: 400px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none; /* Hidden by default */
+}
 
     .modal-body {
         padding: 10px;
@@ -216,33 +215,120 @@
         flex-shrink: 0;
     }
     
-    .chatbot-overlay-header {
-        background-color: #007bff;
-        color: white;
-        padding: 10px;
-        text-align: center;
-        border-radius: 5px 5px 0 0;
-    }
+.chatbot-overlay-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+}
 
-    .chatbot-overlay-body {
-        padding: 10px;
-        height: calc(100% - 40px);
-        overflow-y: auto;
-    }
+.chatbot-overlay-body {
+    padding: 10px;
+    height: calc(100% - 40px);
+    overflow-y: auto;
+}
 
-    .chatbot-toggle {
-        position: fixed;
-        right: 10px;
-        bottom: 10px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        font-size: 24px;
-        text-align: center;
-        line-height: 50px;
-        cursor: pointer;
-        z-index: 1000;
-    }
+.chatbot-toggle {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.meter {
+    position: relative;
+    height: 40px;
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.low-risk {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 33.33%; /* Divide the meter into thirds */
+    background-color: #28a745; /* Green for low risk */
+    color: white;
+    text-align: center;
+    line-height: 40px; /* Center text vertically */
+    z-index: 1;
+}
+
+.medium-risk {
+    position: absolute;
+    top: 0;
+    left: 33.33%;
+    height: 100%;
+    width: 33.33%; /* Divide the meter into thirds */
+    background-color: #ffc107; /* Yellow for medium risk */
+    color: white;
+    text-align: center;
+    line-height: 40px; /* Center text vertically */
+    z-index: 1;
+}
+
+.high-risk {
+    position: absolute;
+    top: 0;
+    left: 66.66%;
+    height: 100%;
+    width: 33.33%; /* Divide the meter into thirds */
+    background-color: #dc3545; /* Red for high risk */
+    color: white;
+    text-align: center;
+    line-height: 40px; /* Center text vertically */
+    z-index: 1;
+}
+
+.current-risk {
+    height: 100%;
+    width: 0%;
+    background-color: rgba(0, 0, 0, 0.2); /* Grey color for the current risk level */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+
+.custom-navbar {
+    padding: 0.5rem 1rem; /* Adjust as needed */
+    height: 50px; /* Adjust as needed */
+}
+
+.custom-navbar .navbar-brand, .custom-navbar .nav-link {
+    padding: 0.5rem; /* Adjust as needed */
+    line-height: 50px; /* Match this with the navbar height */
+}

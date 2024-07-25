@@ -27,23 +27,25 @@
             </div>
         </div>
         
-        <nav class="navbar navbar-expand-lg navbar-light bg-light mt-3">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mt-3 custom-navbar">
             <div class="container">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">7 Day Flood Forecast</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="long_term_index.html">Long Term Annual Prediction<span class="sr-only">(current)</span></a>
-                        </li>
-                    </ul>
+                <div class="d-flex w-100 justify-content-between">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">7 Day Flood Forecast</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="long_term_index.html">Long Term Annual Prediction<span class="sr-only">(current)</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
                 </div>
             </div>
-        </nav>
+        </nav>     
         
 
     </header>
@@ -55,14 +57,12 @@
                         <h2 class="text-center">Predict Flood Risk</h2>
                             <div class="form-group">
                                 <label for="province">Province</label>
-                                <select class="form-control" id="province" name="province" required>
-                                </select>
-
+                                <select class="form-control" id="province" name="province" required></select>
                             </div>
+
                             <div class="form-group">
                                 <label for="amphoe">Amphoe</label>
-                                <select class="form-control" id="amphoe" name="amphoe" required>
-                                </select>
+                                <select class="form-control" id="amphoe" name="amphoe" required></select>
                             </div>
                             <div class="form-group">
                                 <label for="month">Month</label>
@@ -83,6 +83,15 @@
                             </div>
                             <button id= "predict-button" class="btn btn-primary" type="signup-form">Predict Risk</button>
                     </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div id="risk-container" class="meter">
+                    <div class="low-risk">Low Risk</div>
+                    <div class="medium-risk">Medium Risk</div>
+                    <div class="high-risk">High Risk</div>
+                    <div id="current-risk" class="current-risk"></div> 
                 </div>
             </div>
 
@@ -133,7 +142,7 @@
     <!-- Include Bootstrap JavaScript and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="javascript.js"></script>
+    <script src="javascript_long_pred.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>

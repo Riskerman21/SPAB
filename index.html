@@ -27,9 +27,8 @@
             </div>
         </div>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light mt-3">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mt-3 custom-navbar">
             <div class="container">
-                <!-- Navbar content that will be centered on large screens -->
                 <div class="d-flex w-100 justify-content-between">
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav mx-auto">
@@ -41,16 +40,12 @@
                             </li>
                         </ul>
                     </div>
-
-                    <!-- Burger icon -->
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
             </div>
-        </nav>
-        
-                
+        </nav>     
 
     </header>
     <!-- Main Content -->
@@ -98,15 +93,18 @@
             <div class="modal-body">
                 <div id="chatbox">
                     <div id="chat-content"></div>
-                    <input type="text" id="user-input" class="form-control" placeholder="Type your message...">
-                    <button class="btn btn-danger mt-3" style="height: 40px; background-color: gray; color: #ffffff;" onclick="sendMessage()">Send</button>
+                    <div id="input-container" class="d-flex mt-3">
+                        <input type="text" id="user-input" class="form-control" placeholder="Type your message...">
+                        <button class="btn btn-danger ml-2" style="height: 40px; background-color: gray; color: #ffffff;" onclick="sendMessage()">Send</button>
+                    </div>
+                    <br>
                 </div>
             </div>
         </div>
         <button class="chatbot-toggle" onclick="toggleChatbot()">💬</button>
 
         <br>
-        
+
         <div class="row">
             <div class="col-md-12">
                 <h2 class="text-center">Sign Up for Push Alerts</h2>
@@ -131,7 +129,7 @@
     <!-- Include Bootstrap JavaScript and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="javascript.js"></script>
+    <script src="javascript_index.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
