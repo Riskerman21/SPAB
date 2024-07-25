@@ -184,6 +184,38 @@
         display: none; /* Hidden by default */
     }
 
+    .modal-body {
+        padding: 10px;
+        height: calc(100% - 40px);
+        display: flex;
+        flex-direction: column;
+    }
+    
+    #chatbox {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    
+    #chat-content {
+        flex-grow: 1;
+        overflow-y: auto; /* Ensure chat content handles overflow */
+        margin-bottom: 10px;
+    }
+    
+    #input-container {
+        display: flex;
+        align-items: center;
+    }
+    
+    #user-input {
+        flex-grow: 1;
+    }
+    
+    .btn-danger {
+        flex-shrink: 0;
+    }
+    
     .chatbot-overlay-header {
         background-color: #007bff;
         color: white;

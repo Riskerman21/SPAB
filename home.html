@@ -113,8 +113,11 @@
             <div class="modal-body">
                 <div id="chatbox">
                     <div id="chat-content"></div>
-                    <input type="text" id="user-input" class="form-control" placeholder="Type your message...">
-                    <button class="btn btn-danger mt-3" style="height: 40px; background-color: gray; color: #ffffff;" onclick="sendMessage()">Send</button>
+                    <div id="input-container" class="d-flex mt-3">
+                        <input type="text" id="user-input" class="form-control" placeholder="Type your message...">
+                        <button class="btn btn-danger ml-2" style="height: 40px; background-color: gray; color: #ffffff;" onclick="sendMessage()">Send</button>
+                    </div>
+                    <br>
                 </div>
             </div>
         </div>
