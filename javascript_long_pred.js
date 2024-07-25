@@ -51,10 +51,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
  
     document.getElementById('predict-button').addEventListener('click', function(event) {
+        const province = document.getElementById('province').value;
+        const amphoe = document.getElementById('amphoe').value;
+
+        // Check if any field has the default value (indicating it's not selected properly)
+        if (province === "" || amphoe === "" || amphoe === "Please select a province first") {
+            const riskContainer = document.getElementById('current-risk');
+            riskContainer.style.width = `${0}%`;
+            return; // Stop further execution
+        }
+
         event.preventDefault();
     
-        var amphoe = document.getElementById('amphoe').value;
-        var province = document.getElementById('province').value;
         var month = document.getElementById('month').value;
     
         const response = fetch('http://127.0.0.1:5000/long_predict', {
