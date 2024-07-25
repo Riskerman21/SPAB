@@ -56,6 +56,10 @@ class process_text():
         return self.message
 
     def question_asked(self,text):
+        if 'hi' in text.lower() or 'hello' in text.lower() or 'greetings' in text.lower():
+            return f"Hello! I'm the chatbot for Thailand Flood Prediction!\r\n" + "To get general advice ask about general advice.\r\n" + \
+            f"To find about your area ask about your amphoe, provence and a date you would like to enquire about." 
+
         if 'advice' in text.lower() or 'event' in text.lower() or 'do' in text.lower():
             return f"Gather supplies, including non-perishable foods, cleaning supplies, and water for several days, in case you must leave immediately or if services are cut off in your area. Keep important documents in a waterproof container.\r\n" +\
             "If you require urgent help call 1460. You can read any extreme weather warnings via the Thai Meteorological Department (TMD) (กองพยากรณ์อากาศ) or call them on 1182."
