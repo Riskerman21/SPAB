@@ -94,37 +94,8 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch((error) => {
             console.error('Error:', error);
         });
-            function predictRisk() {
-        // Your function logic here
-        alert("Predict Risk button pressed!");
-        var amphoe = document.getElementById('amphoe').value;
-        var province = document.getElementById('province').value;
-        var month = document.getElementById('month').value;
-
-        // Send an AJAX request to the server to predict the flood risk
-        $.ajax({
-            url: '/long_predict',
-            type: 'POST',
-            data: {
-                amphoe: amphoe,
-                province: province,
-                month: month
-            },
-            success: function(response) {
-                // Handle the response from the server
-                console.log('Flood risk prediction:', response);
-                // Update the UI with the predicted risk information
-            },
-            error: function(error) {
-                // Handle any errors that occur during the AJAX request
-                console.error('Error:', error);
-            }
-        });
-    }
-
-
     });
-
+ 
     document.getElementById('predict-button').addEventListener('click', function(event) {
         event.preventDefault(); // Prevent the default form submission behavior
     
@@ -134,25 +105,21 @@ document.addEventListener('DOMContentLoaded', function() {
     
         // Send an AJAX request to the server to predict the flood risk
         $.ajax({
-            url: '/long_predict',
-            type: 'GET',
-            data: {
+            url: 'http://127.0.0.1:5000/long_predict',
+            type: 'POST',
+            data: JSON.stringify({
+                month: month,
                 amphoe: amphoe,
-                province: province,
-                month: month
-            },
+                province: province
+            }),
+            contentType: 'application/json',
             success: function(response) {
-                // Handle the response from the server
-                console.log('Flood risk prediction:', response);
-                // Update the UI with the predicted risk information
-                document.getElementById('predicted-risk').textContent = 'Predicted Risk: ' + response;
+                console.log(response);
             },
-            error: function(error) {
-                // Handle any errors that occur during the AJAX request
-                console.error('Error:', error);
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
             }
         });
-    });   
-
+    });
     
 });

@@ -89,12 +89,12 @@ Please reply to this email for feedback or any questions you may have.
 
 @app.route('/long_predict', methods=['POST'])
 def long_predict():
-    #data = request.json
+    data = request.json
 
     # Extract the necessary input data for the long predict model
-    months = request.args.get('month')
-    amphoe = request.args.get('amphoe')
-    province = request.args.get('province')
+    months = int(data['month'])
+    amphoe = str(data['amphoe'])
+    province = str(data['province'])
     # Call your prediction function
     predictions = predict_flood_risk(months, amphoe, province)
 
