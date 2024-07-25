@@ -44,6 +44,7 @@ if __name__ == "__main__":
     'pred': all_preds.flatten()  
     })
 
+    result_df = result_df.clip(lower=0)
     result_df['pred'] = np.log1p(result_df['pred'])
     result_df['pred'] = result_df['pred'] - min(result_df['pred'])
 
