@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var amphoes = data.split('\n');
         console.log(amphoes);
         amphoes.forEach(function(amphoe) {
+            amphoe = amphoe.substring(0, amphoe.length - 1);
             $('#amphoe').append('<option value="' + amphoe + '">' + amphoe + '</option>');
         });
     });
@@ -48,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var provinces = data.split('\n');
         console.log(provinces);
         provinces.forEach(function(province) {
+            province = province.substring(0, province.length - 1);
             $('#province').append('<option value="' + province + '">' + province + '</option>');
         });
     });
@@ -122,46 +124,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     });
-    document.getElementById('predict-button').addEventListener('click', predictRisk);
 
-    function predictRisk() {
+    document.getElementById('predict-button').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+    
         var amphoe = document.getElementById('amphoe').value;
         var province = document.getElementById('province').value;
         var month = document.getElementById('month').value;
-        console.log(amphoe,province,month);
-        // Send an AJAX request to the '/long_predict' endpoint
-        fetch('/long_predict', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
+    
+        // Send an AJAX request to the server to predict the flood risk
+        $.ajax({
+            url: '/long_predict',
+            type: 'GET',
+            data: {
                 amphoe: amphoe,
                 province: province,
                 month: month
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Handle the response data
-            var predictions = data.predictions;
-            console.log(predictions); // Log the predictions to the console
-    
-            // Update the website UI with the predictions
-            var predictionContainer = document.getElementById('prediction-container');
-            predictionContainer.innerHTML = ''; // Clear any existing content
-    
-            predictions.forEach(prediction => {
-                var predictionElement = document.createElement('p');
-                predictionElement.textContent = prediction;
-                predictionContainer.appendChild(predictionElement);
-            });
-        })
-        .catch(error => {
-            console.error('Error:', error); // Log any errors to the console
+            },
+            success: function(response) {
+                // Handle the response from the server
+                console.log('Flood risk prediction:', response);
+                // Update the UI with the predicted risk information
+                document.getElementById('predicted-risk').textContent = 'Predicted Risk: ' + response;
+            },
+            error: function(error) {
+                // Handle any errors that occur during the AJAX request
+                console.error('Error:', error);
+            }
         });
-        
-    }
+    });   
 
     async function sendMessage() {
         const userInput = document.getElementById('user-input').value;
