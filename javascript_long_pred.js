@@ -70,8 +70,26 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data.message);
-            //window.location.href = 'long_term_index.html';
+            console.log(data.predictions);
+            const riskContainer = document.getElementById('current-risk');
+
+            // Update width based on risk level
+            switch (data.predictions) {
+                case 'Low Risk':
+                    widthPercentage = 18; // Set the desired width for low risk
+                    break;
+                case 'Medium Risk':
+                    widthPercentage = 50; // Set the desired width for medium risk
+                    break;
+                case 'High Risk':
+                    widthPercentage = 83; // Set the desired width for high risk
+                    break;
+                default:
+                    widthPercentage = 0; // Default width if risk level is unknown
+                    break;
+            }
+            
+            riskContainer.style.width = `${widthPercentage}%`;
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -141,3 +159,7 @@ function toggleChatbot() {
         chatbot.style.display = 'none';
     }
 }  
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
