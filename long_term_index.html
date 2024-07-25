@@ -27,23 +27,25 @@
             </div>
         </div>
         
-        <nav class="navbar navbar-expand-lg navbar-light bg-light mt-3">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mt-3 custom-navbar">
             <div class="container">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">7 Day Flood Forecast</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="long_term_index.html">Long Term Annual Prediction<span class="sr-only">(current)</span></a>
-                        </li>
-                    </ul>
+                <div class="d-flex w-100 justify-content-between">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">7 Day Flood Forecast</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="long_term_index.html">Long Term Annual Prediction<span class="sr-only">(current)</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
                 </div>
             </div>
-        </nav>
+        </nav>     
         
 
     </header>
@@ -79,17 +81,17 @@
                                     <option value="12">December</option>
                                 </select>
                             </div>
-                            <button id= "predict-button" class="btn btn-primary">Predict Risk</button>
+                            <button id= "predict-button" class="btn btn-primary" type="signup-form">Predict Risk</button>
                     </div>
                 </div>
             </div>
 
             <div class="container">
-                <div id="risk-container" class="meter d-none">
+                <div id="risk-container" class="meter">
                     <div class="low-risk">Low Risk</div>
                     <div class="moderate-risk">Moderate Risk</div>
                     <div class="high-risk">High Risk</div>
-                    <div class="current-risk"></div> <!-- Starts at 0% -->
+                    <div id="current-risk" class="current-risk"></div> 
                 </div>
             </div>
 
@@ -118,8 +120,11 @@
             <div class="modal-body">
                 <div id="chatbox">
                     <div id="chat-content"></div>
-                    <input type="text" id="user-input" class="form-control" placeholder="Type your message...">
-                    <button class="btn btn-danger mt-3" style="height: 40px; background-color: gray; color: #ffffff;" onclick="sendMessage()">Send</button>
+                    <div id="input-container" class="d-flex mt-3">
+                        <input type="text" id="user-input" class="form-control" placeholder="Type your message...">
+                        <button class="btn btn-danger ml-2" style="height: 40px; background-color: gray; color: #ffffff;" onclick="sendMessage()">Send</button>
+                    </div>
+                    <br>
                 </div>
             </div>
         </div>

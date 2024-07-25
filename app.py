@@ -6,8 +6,6 @@ import pandas as pd
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from tensorflow.keras.models import load_model
 import re
-#pip install spacy
-#python -m spacy download en_core_web_sm
 import spacy
 import en_core_web_sm
 import pandas as pd
@@ -30,7 +28,6 @@ month_number_to_name = {
 }
 
 class process_text():
-
     def __init__(self):
         self.message = "Hello! I am the Thailand Flood Safety Chat Bot. I am here to provide assistance!\r\n" + \
             "Please note that I can only currently work in English, including location names.\r\n" + \
@@ -108,11 +105,6 @@ class process_text():
             return f"I'm not quite sure what you have asked of me. To get general advice ask about general advice.\r\n" + \
             "To find about your area ask about your amphoe, provence and a date you would like to enquire about."
 
-
-# chatbot = process_text()
-# print(chatbot.question_asked("I am in a foreign country, where do i go"))
-# print(chatbot.question_asked("What is the current advice"))
-
 # Load the saved model
 def predict_flood_risk(months: int, amphoe: str, province: str) -> str:
     model = load_model('./flood_risk_prediction_model.h5')
@@ -164,7 +156,7 @@ def predict_flood_risk(months: int, amphoe: str, province: str) -> str:
     return predicted_risk_categories[0]
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app)
 
 @app.route('/send_email', methods=['POST'])
 def send_email():

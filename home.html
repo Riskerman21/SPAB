@@ -11,43 +11,11 @@
     <!-- Header -->
     <header class="bg-white text-dark pt-3">
         <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
-                <!-- Left image -->
-                <div class="d-none d-md-block">
-                    <img src="download.png" alt="Thailand flah" class="img-fluid" style="max-height: 50px;">
-                </div>
-                
-                <!-- Title -->
-                <h1 class="text-center flex-grow-1">Thailand Flood Safety Map</h1>
-                
-                <!-- Right image -->
-                <div class="d-none d-md-block">
-                    <img src="download.png" alt="Thailand flah" class="img-fluid" style="max-height: 50px;">
-                </div>
-            </div>
+            <h1 class="text-center">Thailand Flood Safety Map</h1>
+            <hr class="custom-hr">
         </div>
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light mt-3 custom-navbar">
-            <div class="container">
-                <div class="d-flex w-100 justify-content-between">
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav mx-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="index.html">7 Day Flood Forecast<span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="long_term_index.html">Long Term Annual Prediction</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-            </div>
-        </nav>     
-
     </header>
+
     <!-- Main Content -->
     <main class="container mt-4">
         <div class="row align-items-center">
@@ -77,12 +45,64 @@
         <br></br>
         <br></br>
         <br></br>
-
         <div class="row">
             <div class="col-4 text-left">
                 <button id="pause-button" class="btn btn-primary">Resume</button>
             </div>
         </div>
+
+        <br></br>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center">Sign Up for Push Alerts</h2>
+                <form id="signup-form">
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                </form>
+            </div>
+        </div>
+        <section class="container mt-4">
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="text-center">Predict Flood Risk</h2>
+                            <div class="form-group">
+                                <label for="province">Province</label>
+                                <select class="form-control" id="province" name="province" required>
+                                </select>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="amphoe">Amphoe</label>
+                                <select class="form-control" id="amphoe" name="amphoe" required>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="month">Month</label>
+                                <select class="form-control" id="month" name="month" required>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                            </div>
+                            <button id= "predict-button" class="btn btn-primary">Predict Risk</button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Chatbot Overlay -->
         <div class="chatbot-overlay" id="chatbot-overlay">
@@ -102,21 +122,6 @@
             </div>
         </div>
         <button class="chatbot-toggle" onclick="toggleChatbot()">💬</button>
-
-        <br>
-
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class="text-center">Sign Up for Push Alerts</h2>
-                <p class="text-center">Stay updated with the latest flood alerts by signing up for push notifications. Enter your email below to receive timely updates.</p>
-                <form id="signup-form">
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="e.g., example@domain.com" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Sign Up</button>
-                </form>
-            </div>
-        </div>    
     </main>
 
     <!-- Footer -->
@@ -129,7 +134,7 @@
     <!-- Include Bootstrap JavaScript and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="javascript_index.js"></script>
+    <script src="javascript.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
