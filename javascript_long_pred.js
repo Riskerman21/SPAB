@@ -54,13 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const province = document.getElementById('province').value;
         const amphoe = document.getElementById('amphoe').value;
 
-        // Check if any field has the default value (indicating it's not selected properly)
-        if (province === "" || amphoe === "" || amphoe === "Please select a province first") {
-            const riskContainer = document.getElementById('current-risk');
-            riskContainer.style.width = `${0}%`;
-            return; // Stop further execution
-        }
-
         event.preventDefault();
     
         var month = document.getElementById('month').value;
