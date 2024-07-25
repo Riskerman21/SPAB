@@ -4,7 +4,7 @@ import re
 import spacy
 import en_core_web_sm
 import pandas as pd
-from long_perdict import predict_flood_risk
+from app import predict_flood_risk
 from dateutil import parser
 from datetime import datetime
 
