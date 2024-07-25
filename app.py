@@ -156,7 +156,7 @@ def predict_flood_risk(months: int, amphoe: str, province: str) -> str:
     return predicted_risk_categories[0]
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app)
 
 @app.route('/send_email', methods=['POST'])
 def send_email():
