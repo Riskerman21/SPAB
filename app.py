@@ -10,8 +10,14 @@ import spacy
 import en_core_web_sm
 import pandas as pd
 from dateutil import parser
+from geopy.geocoders import Nominatim
 from datetime import datetime
+import tensorflow as tf
+import numpy as np
+from datetime import datetime, timedelta
 
+
+address_pattern = re.compile(r"\d+\s+\w+\s+(Road|Rd|Street|St),\s+\w+\s+\w+,\s+\w+\s+\d{5},\s+Thailand")
 month_number_to_name = {
     1: 'January',
     2: 'February',
@@ -48,11 +54,29 @@ class process_text():
 
         df = pd.read_csv('ChatBotData/amphoe_list.csv', header=None)
         self.AMPHOES = df[0].tolist()
+        self.short_model = tf.keras.models.load_model('precib_cover_predicition.keras')
 
     def __str__(self):
         return self.message
 
-    def question_asked(self,text):
+    def get_lat_long(self, address):
+        loc = Nominatim(user_agent="Geopy Library")
+
+        getLoc = (loc.geocode(address))
+        if getLoc:
+            return (getLoc.latitude, getLoc.longitude)
+        return None
+
+    def extract_address(self, text):
+        address_pattern = re.compile(r'\d+\s+\w+\s+Road,\s+\w+\s*,\s+\w+\s+\d+,\s+\w+')
+        match = address_pattern.search(text)
+        if match:
+            return match.group()
+        return None
+
+    def question_asked(self, text):
+        text_original = text
+
         if 'hi' in text.lower() or 'hello' in text.lower() or 'greetings' in text.lower():
             return f"Hello! I'm the chatbot for Thailand Flood Prediction!\r\n" + "To get general advice ask about general advice.\r\n" + \
             f"To find about your area ask about your amphoe, provence and a date you would like to enquire about." 
@@ -66,10 +90,9 @@ class process_text():
         provence_changed = False
         amphoe_changed = False
         date_changed = False
-
+        cardinals = []
 
         for ent in doc.ents:
-            print(ent)
             text = ent.text.replace(',', '').replace('.', '')
 
             if text in self.PROVINCES:
@@ -88,6 +111,39 @@ class process_text():
                 except:
                     self.date = datetime.now().month
 
+        if "short term" in text_original.lower() or "next day" in text_original.lower() or "7 days" in text_original.lower():
+            address = f"{self.amphoe}, {self.province}"
+            lat_long = self.get_lat_long(address)
+            if lat_long:
+                weather_forecast = pd.read_excel('ForecastedWeather.xlsx')
+                
+                data = {
+                    'lat': [lat_long[0] for _ in range(len(weather_forecast))],
+                    'long': [lat_long[1] for _ in range(len(weather_forecast))],
+                    'tempmax': weather_forecast['tempmax'].tolist(),
+                    'tempmin': weather_forecast['tempmin'].tolist(),
+                    'temp': weather_forecast['temp'].tolist(),
+                    'sealevelpressure': weather_forecast['sealevelpressure'].tolist(),
+                    'precipprob': weather_forecast['precipprob'].tolist(),
+                    'humidity': weather_forecast['humidity'].tolist()
+                }
+                df = pd.DataFrame(data)
+                scaler = StandardScaler()
+                scaled_features = scaler.fit_transform(df)
+                preds = self.short_model.predict(scaled_features)
+                result_df = abs(preds)
+                result_df = np.log1p(result_df)
+                result_df = result_df - min(result_df).tolist()
+
+                today = datetime.now().date()
+                date_list = [today + timedelta(days=i) for i in range(7)]
+
+                result = f'Great here is the prediction for ({self.amphoe}, {self.province}) for the next 7 days.\r\n'
+                for i in range(7):
+                    result += f"{date_list[i]}, {self.categorize(result_df[i])} risk.\r\n"
+
+                return f"{result}"
+
         if provence_changed and amphoe_changed:
             addition = ""
             if self.date is None:
@@ -104,7 +160,15 @@ class process_text():
         else:
             return f"I'm not quite sure what you have asked of me. To get general advice ask about general advice.\r\n" + \
             "To find about your area ask about your amphoe, provence and a date you would like to enquire about."
+        
 
+    def categorize(self, value):
+        if value < 1:
+            return "Low"
+        elif value < 2.5:
+            return "Medium"
+        else:
+            return "High"
 # Load the saved model
 def predict_flood_risk(months: int, amphoe: str, province: str) -> str:
     model = load_model('./flood_risk_prediction_model.h5')
