@@ -99,10 +99,6 @@ class process_text():
                 provence_changed = True
                 self.province = text
 
-            elif f"{text} District" in self.AMPHOES:
-                amphoe_changed = True
-                self.amphoe = f"{text} District"
-
             elif ent.label_ == 'DATE':
                 date_changed = True
                 try:
@@ -110,6 +106,10 @@ class process_text():
                     self.date = date_obj.month
                 except:
                     self.date = datetime.now().month
+            
+            elif f"{text.replace("District", "")} District" and not self.PROVINCES and text in dict[self.PROVINCES]:
+                amphoe_changed = True
+                self.amphoe = f"{text} District"
 
         if "short term" in text_original.lower() or "next day" in text_original.lower() or "7 days" in text_original.lower():
             address = f"{self.amphoe}, {self.province}"
@@ -159,8 +159,7 @@ class process_text():
 
         else:
             return f"I'm not quite sure what you have asked of me. To get general advice ask about general advice.\r\n" + \
-            "To find about your area ask about your amphoe, provence and a date you would like to enquire about."
-        
+            "To find about your area ask about your amphoe, provence and a date you would like to enquire about."    
 
     def categorize(self, value):
         if value < 1:
