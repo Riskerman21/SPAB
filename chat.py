@@ -79,7 +79,7 @@ class process_text():
 
         if 'hi' in text.lower() or 'hello' in text.lower() or 'greetings' in text.lower():
             return f"Hello! I'm the chatbot for Thailand Flood Prediction!\r\n" + "To get general advice ask about general advice.\r\n" + \
-            f"To find about your area ask about your amphoe, provence and a date you would like to enquire about." 
+            f"To find about your area ask about your amphoe, provence and a date you would like to enquire about."
 
         if 'advice' in text.lower() or 'event' in text.lower() or 'do' in text.lower():
             return f"Gather supplies, including non-perishable foods, cleaning supplies, and water for several days, in case you must leave immediately or if services are cut off in your area. Keep important documents in a waterproof container.\r\n" +\
@@ -116,7 +116,7 @@ class process_text():
             lat_long = self.get_lat_long(address)
             if lat_long:
                 weather_forecast = pd.read_excel('ForecastedWeather.xlsx')
-                
+
                 data = {
                     'lat': [lat_long[0] for _ in range(len(weather_forecast))],
                     'long': [lat_long[1] for _ in range(len(weather_forecast))],
@@ -138,7 +138,7 @@ class process_text():
                 today = datetime.now().date()
                 date_list = [today + timedelta(days=i) for i in range(7)]
 
-                result = f'Great here is the prediction for ({self.amphoe}, {self.province}) for the next 7 days.\r\n'
+                result = f'Great here is the prediction for the next 7 days.\r\n'
                 for i in range(7):
                     result += f"{date_list[i]}, {self.categorize(result_df[i])} risk.\r\n"
 
@@ -160,7 +160,7 @@ class process_text():
         else:
             return f"I'm not quite sure what you have asked of me. To get general advice ask about general advice.\r\n" + \
             "To find about your area ask about your amphoe, provence and a date you would like to enquire about."
-        
+
 
     def categorize(self, value):
         if value < 1:
@@ -221,5 +221,5 @@ def predict_flood_risk(months: int, amphoe: str, province: str) -> str:
     return predicted_risk_categories[0]
 
 chat = process_text()
-text = "123 Sukhumvit Road, Khlong Toei, Bangkok 10110, Thailand" 
+text = "123 Sukhumvit Road, Khlong Toei, Bangkok 10110, Thailand"
 print(chat.question_asked(("I want a short term prediction for " + text)))
