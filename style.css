@@ -149,18 +149,19 @@
 }
 
 #pause-button {
-    bottom: 3%;
-    left: 3%;
+    bottom: 5%;
+    left: 5%;
 }
 
 #bottom-right-button {
-    bottom: 10px;
-    right: 10px;
+    bottom: 5%;
+    right: 5%;
 }
 
 #map-container {
     position: relative;
-    height: 500px; /* Set a height for the map */
+    height: 90%; /* Set a height for the map */
+    padding-bottom: 5%;
 }
 
 .custom-hr {
