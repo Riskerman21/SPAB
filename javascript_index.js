@@ -1,17 +1,17 @@
 // maps.js
 document.addEventListener('DOMContentLoaded', function() {
     const mapsData = [
-        { src: 'maps/map0.html', title: 'Fri, 26 Jul 2024' },
-        { src: 'maps/map1.html', title: 'Sat, 27 Jul 2024'},
-        { src: 'maps/map2.html', title: 'Sun, 28 Jul 2024'},
-        { src: 'maps/map3.html', title: 'Mon, 29 Jul 2024'},
-        { src: 'maps/map4.html', title: 'Tue, 30 Jul 2024'},
-        { src: 'maps/map5.html', title: 'Wed, 31 Jul 2024'},
-        { src: 'maps/map6.html', title: 'Thu, 1 Aug 2024'}
+        { src: 'maps/map0.html', title: 'Sat, 27 Jul 2024' },
+        { src: 'maps/map1.html', title: 'Sun, 28 Jul 2024'},
+        { src: 'maps/map2.html', title: 'Mon, 29 Jul 2024'},
+        { src: 'maps/map3.html', title: 'Tue, 30 Jul 2024'},
+        { src: 'maps/map4.html', title: 'Wed, 31 Jul 2024'},
+        { src: 'maps/map5.html', title: 'Thu, 1 Aug 2024'},
+        { src: 'maps/map6.html', title: 'Fri, 2 Aug 2024'}
     ];
 
     let currentIndex = 0;
-    let intervalId;
+    let intervalId; 
 
     function updateMap() { 
         const titleContainer = document.getElementById('map-title-container');
